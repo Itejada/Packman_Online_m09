@@ -1,5 +1,6 @@
 package sample;
 
+import escenas.EscenaCome;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import escenas.EscenaSol;
@@ -24,8 +25,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         EscenaSol escenaSol=new EscenaSol();
+        EscenaCome escenaCome= new EscenaCome();
 
-        escenaSol.start(primaryStage);
+        escenaCome.start(primaryStage);
 
     }
 }

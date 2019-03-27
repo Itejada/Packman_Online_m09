@@ -1,17 +1,8 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import model.EscenaSol;
-import model.Sun;
+import escenas.EscenaSol;
 
 public class Main extends Application {
 

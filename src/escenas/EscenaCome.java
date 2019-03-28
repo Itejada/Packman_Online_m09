@@ -64,21 +64,17 @@ public class EscenaCome extends Application {
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
                     if (input.contains("LEFT")) {
                         x -= velocidad;
-                        sun.update(2);
                     }
                     if (input.contains("RIGHT")) {
                         x += velocidad;
-                        sun.update(1);
                     }
                 }
                 if (input.contains("UP") != input.contains("DOWN")) {
                     if (input.contains("UP")) {
                         y -= velocidad;
-                        sun.update(1);
                     }
                     if (input.contains("DOWN")) {
                         y += velocidad;
-                        sun.update(1);
                     }
                 }
                     sun.render(gc);

@@ -33,20 +33,7 @@ public class Sun {
 
 
     public void move() {
-        if (dirX == 1) {
-            posX += velX;
-            if (posX >= 400 - width) dirX = (-1) * dirX;
-        } else {
-            posX -= velX;
-            if (posX <= 0) dirX = (-1) * dirX;
-        }
-        if (dirY == 1) {
-            posY += velY;
-            if (posY >= 500 - height) dirY = (-1) * dirY;
-        } else {
-            posY -= velY;
-            if (posY <= 0) dirY = (-1) * dirY;
-        }
+
     }
 
     public void render(GraphicsContext gc) {
@@ -75,4 +62,11 @@ public class Sun {
     public void setPosY(double posY) {
         this.posY = posY;
     }
+    public void setWidth(int _whidth){
+        this.width= _whidth;
+    }
+    public void setHeight(int _height){
+        this.width= _height;
+    }
+
 }

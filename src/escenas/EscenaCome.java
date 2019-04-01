@@ -19,7 +19,7 @@ public class EscenaCome extends Application {
 
     private double x = 0;
     private double y = 0;
-    double velocidad = 5;
+    double velocidad = 2;
     private final int ANCHO = 650;
     private final int ALTURA = 450;
 
@@ -35,6 +35,8 @@ public class EscenaCome extends Application {
         sprite2.setImage(new Image("img/pacbol_0.png"));
         theStage.setTitle("Keyboard Example");
         //  ImageView iv = new ImageView("img/pacbol_0.png");
+
+        Image front = new Image("img/pacbol_0.png");
         Image left = new Image("img/pacbol_2.png");
         Image rigth = new Image("img/pacbol_1.png");
         Image up = new Image("img/pacbol_3.png");
@@ -68,13 +70,17 @@ public class EscenaCome extends Application {
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
 
-        Image leftG = new Image("img/sun.png");
+
+
 
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 // Clear the canvas
                 gc.clearRect(0, 0, ANCHO, ALTURA);
+                gc.setFill(Color.BLUE);
+                gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+                sprite2.setImage(front);
 
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
                     if (input.contains("LEFT")) {

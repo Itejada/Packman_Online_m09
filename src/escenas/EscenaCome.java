@@ -21,8 +21,8 @@ public class EscenaCome extends Application {
     private double x = 0;
     private double y = 0;
     double velocidad = 2;
-    private final int ANCHO = 650;
-    private final int ALTURA = 450;
+    private static final int ANCHO = 650;
+    private static final int ALTURA = 450;
 
 
     @Override
@@ -81,15 +81,13 @@ public class EscenaCome extends Application {
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
 
-                fantasma.render(gc);
-
                 // Clear the canvas
                 gc.clearRect(0, 0, ANCHO, ALTURA);
                 gc.setFill(Color.BLUE);
                 gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 sprite2.setImage(front);
+                fantasma.setImage(fimage);
 
-                fantasma.move();
 
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
                     if (input.contains("LEFT")) {
@@ -144,6 +142,10 @@ public class EscenaCome extends Application {
                 //gc.drawImage(rotatedImage,x,y, 50,50);
                 sprite2.setPositionX(x);
                 sprite2.setPositionY(y);
+
+                fantasma.render(gc);
+                fantasma.move();
+
                 sprite2.render(gc);
 
                 // gc.drawImage(leftG, x, y);

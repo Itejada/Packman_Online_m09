@@ -20,7 +20,7 @@ public class EscenaCome extends Application {
 
     private double x = 0;
     private double y = 0;
-    double velocidad = 2;
+    double velocidad = 4;
     private static final int ANCHO = 650;
     private static final int ALTURA = 450;
 
@@ -29,7 +29,9 @@ public class EscenaCome extends Application {
     public void start(Stage theStage) {
 
         Image fimage = new Image("img/0_0.png");
-        Fantasma fantasma = new Fantasma(fimage,0,0);
+        Fantasma fantasma = new Fantasma(fimage,0,0, ANCHO,ALTURA );
+        Fantasma fantasma2 = new Fantasma(fimage,ANCHO,ALTURA, ANCHO,ALTURA );
+
 
         Sprite2 sprite2 = new Sprite2();
         sprite2.setHeight(28);
@@ -87,6 +89,7 @@ public class EscenaCome extends Application {
                 gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 sprite2.setImage(front);
                 fantasma.setImage(fimage);
+                fantasma2.setImage(fimage);
 
 
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
@@ -142,11 +145,13 @@ public class EscenaCome extends Application {
                 //gc.drawImage(rotatedImage,x,y, 50,50);
                 sprite2.setPositionX(x);
                 sprite2.setPositionY(y);
-
+                sprite2.render(gc);
                 fantasma.render(gc);
                 fantasma.move();
+                fantasma2.render(gc);
+                fantasma2.move();
 
-                sprite2.render(gc);
+
 
                 // gc.drawImage(leftG, x, y);
 

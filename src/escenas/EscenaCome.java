@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.Fantasma;
 import sprites.Sprite2;
 
 import java.util.ArrayList;
@@ -26,6 +27,10 @@ public class EscenaCome extends Application {
 
     @Override
     public void start(Stage theStage) {
+
+        Image fimage = new Image("img/0_0.png");
+        Fantasma fantasma = new Fantasma(fimage,0,0);
+
         Sprite2 sprite2 = new Sprite2();
         sprite2.setHeight(28);
         sprite2.setWidth(29);
@@ -73,14 +78,18 @@ public class EscenaCome extends Application {
 
 
 
-
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
+
+                fantasma.render(gc);
+
                 // Clear the canvas
                 gc.clearRect(0, 0, ANCHO, ALTURA);
                 gc.setFill(Color.BLUE);
                 gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
                 sprite2.setImage(front);
+
+                fantasma.move();
 
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
                     if (input.contains("LEFT")) {

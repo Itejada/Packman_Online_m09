@@ -1,18 +1,15 @@
 package model;
 
-import javafx.geometry.Point2D;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-public class Sun {
+public class Fantasma {
 
     private Image image;
     private double posX, posY, velX, velY, width, height;
     private int dirX, dirY;
 
-    public Sun() {
+    public Fantasma() {
         this.posX = 0.0f;
         this.posY = 0.0f;
         this.velX = 1.0f;
@@ -21,7 +18,7 @@ public class Sun {
         this.dirY = 1;
     }
 
-    public Sun(Image _image, double x, double y) {
+    public Fantasma(Image _image, double x, double y) {
         this.posX = x;
         this.posY = y;
         this.velX = 4.0f;
@@ -51,7 +48,6 @@ public class Sun {
 
     public void render(GraphicsContext gc) {
         gc.drawImage(image, posX, posY);
-        //System.out.println(posX + ":" + posY);
     }
 
     public void setImage(Image i) {

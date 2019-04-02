@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Fantasma;
@@ -25,8 +26,14 @@ public class EscenaCome extends Application {
     private static final int ALTURA = 450;
 
 
+    AudioClip audio = new AudioClip("file:///c:/developer/temp/audio.mp3");
+
     @Override
     public void start(Stage theStage) {
+
+
+        audio.play();
+        audio.setVolume(0.85);
 
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage,0,0, ANCHO,ALTURA );
@@ -91,6 +98,14 @@ public class EscenaCome extends Application {
                 fantasma.setImage(fimage);
                 fantasma2.setImage(fimage);
 
+                sprite2.setPositionX(x);
+                sprite2.setPositionY(y);
+                fantasma.move();
+
+
+                if(sprite2.getBoundary().intersects(fantasma.getBoundary())) {
+
+                }
 
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
                     if (input.contains("LEFT")) {
@@ -139,18 +154,8 @@ public class EscenaCome extends Application {
                 }//hasta aqui el if de arriba/abajo
 
 
-                SnapshotParameters params = new SnapshotParameters();
-                params.setFill(Color.TRANSPARENT);
-                //Image rotatedImage = iv.snapshot(params, null);
-                //gc.drawImage(rotatedImage,x,y, 50,50);
-                sprite2.setPositionX(x);
-                sprite2.setPositionY(y);
                 sprite2.render(gc);
                 fantasma.render(gc);
-                fantasma.move();
-                fantasma2.render(gc);
-                fantasma2.move();
-
 
 
                 // gc.drawImage(leftG, x, y);

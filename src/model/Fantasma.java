@@ -1,9 +1,11 @@
 package model;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import sprites.Sprite2;
 
-public class Fantasma {
+public class Fantasma extends Sprite2 {
 
     private Image image;
     private double posX, posY, velX, velY, width, height;
@@ -73,5 +75,15 @@ public class Fantasma {
 
     public void setPosY(double posY) {
         this.posY = posY;
+    }
+
+    public Rectangle2D getBoundary()
+    {
+        return new Rectangle2D(posX,posY,width,height);
+    }
+
+    public boolean intersects(Sprite2 s)
+    {
+        return s.getBoundary().intersects( this.getBoundary() );
     }
 }

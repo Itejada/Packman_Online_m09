@@ -10,11 +10,15 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Fantasma;
 import sprites.Sprite2;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class EscenaCome extends Application {
@@ -24,16 +28,21 @@ public class EscenaCome extends Application {
     double velocidad = 4;
     private static final int ANCHO = 650;
     private static final int ALTURA = 450;
+    Image[] FrameRigth = new Image[6];
 
 
-    AudioClip audio = new AudioClip("file:///c:/developer/temp/audio.mp3");
 
     @Override
     public void start(Stage theStage) {
 
+        for(int i=1;i<7;i++) {
+            FrameRigth[i-1] = new Image("img/pacbol_0"+i+".png");
+        }
 
-        audio.play();
-        audio.setVolume(0.85);
+        String pathStartSound = "../sounds/pacman_beginning.wav";
+        Media media = new Media(new File(pathStartSound).toURI().toString());
+        MediaPlayer startSound = new MediaPlayer(media);
+        startSound.setAutoPlay(true);
 
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage,0,0, ANCHO,ALTURA );
@@ -85,11 +94,11 @@ public class EscenaCome extends Application {
 
 
 
-
+        int i=0;
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
-
+                long residuo = ( currentNanoTime / 100000000) %6;
                 // Clear the canvas
                 gc.clearRect(0, 0, ANCHO, ALTURA);
                 gc.setFill(Color.BLUE);
@@ -106,13 +115,12 @@ public class EscenaCome extends Application {
                 if(sprite2.getBoundary().intersects(fantasma.getBoundary())) {
 
                 }
-
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
                     if (input.contains("LEFT")) {
                         if (x > 0) {
                             x -= velocidad;
-                            sprite2.setImage(left);
-                            //iv.setRotate(-90);
+                            System.out.println(residuo);
+                            sprite2.setImage(FrameRigth[(int)residuo]);
                         } else {
                             x = 0;
                         }
@@ -164,6 +172,9 @@ public class EscenaCome extends Application {
         }.start();
 
         theStage.show();
+
     }
+
+
 
 }

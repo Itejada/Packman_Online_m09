@@ -8,6 +8,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Fantasma;
@@ -28,10 +29,8 @@ public class EscenaCome extends Application {
     public void start(Stage theStage) {
 
         Image fimage = new Image("img/fantasma0_0.png");
-        Image fimage3 = new Image("img/fantasma2_0.png");
         Fantasma fantasma = new Fantasma(fimage,0,0, ANCHO,ALTURA );
-        Fantasma fantasma2 = new Fantasma(fimage,ANCHO-24,ALTURA-24, ANCHO,ALTURA );
-        Fantasma fantasma3 = new Fantasma(fimage,ANCHO/2,ALTURA/2, ANCHO,ALTURA );
+        Fantasma fantasma2 = new Fantasma(fimage,ANCHO,ALTURA, ANCHO,ALTURA );
 
 
         Sprite2 sprite2 = new Sprite2();
@@ -91,7 +90,6 @@ public class EscenaCome extends Application {
                 sprite2.setImage(front);
                 fantasma.setImage(fimage);
                 fantasma2.setImage(fimage);
-                fantasma3.setImage(fimage3);
 
 
                 if (input.contains("LEFT") != input.contains("RIGHT")) {
@@ -152,8 +150,6 @@ public class EscenaCome extends Application {
                 fantasma.move();
                 fantasma2.render(gc);
                 fantasma2.move();
-                fantasma3.render(gc);
-                fantasma3.move();
 
 
 

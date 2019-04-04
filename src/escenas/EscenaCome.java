@@ -7,11 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import model.Fantasma;
 import sprites.Sprite2;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class EscenaCome extends Application {
@@ -26,14 +29,12 @@ public class EscenaCome extends Application {
 
     long mCurrentNanoTime=0;
 
-    //AudioClip audio = new AudioClip("file:///c:/developer/temp/audio.mp3");
+
 
     @Override
     public void start(Stage theStage) {
 
 
-//        audio.play();
-//        audio.setVolume(0.85);
         String pathStartSound = "../sounds/pacman_beginning.wav";
         Media media = new Media(new File(pathStartSound).toURI().toString());
         MediaPlayer startSound = new MediaPlayer(media);

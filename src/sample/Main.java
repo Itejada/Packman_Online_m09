@@ -17,7 +17,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         EscenaCome escenaCome= new EscenaCome();
-
         escenaCome.start(primaryStage);
 
     }

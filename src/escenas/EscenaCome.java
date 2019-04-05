@@ -38,13 +38,13 @@ public class EscenaCome extends Application {
         startSound.setAutoPlay(true);
 
         Image fimage = new Image("img/fantasma0_0.png");
-        Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, ANCHO, ALTURA);
+        Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, ANCHO, ALTURA, 50,50);
 
-        Fantasma fantasma2 = new Fantasma(fimage, 100, 200, ANCHO, ALTURA);
+        Fantasma fantasma2 = new Fantasma(fimage, 100, 200, ANCHO, ALTURA, 50,50);
 
-        Fantasma fantasma3 = new Fantasma(fimage, 20, 33, ANCHO, ALTURA);
+        Fantasma fantasma3 = new Fantasma(fimage, 20, 33, ANCHO, ALTURA,50,50);
 
-        Fantasma fantasma4 = new Fantasma(fimage, 45, 120, ANCHO, ALTURA);
+        Fantasma fantasma4 = new Fantasma(fimage, 45, 120, ANCHO, ALTURA,50,50);
 
 
 
@@ -61,7 +61,7 @@ public class EscenaCome extends Application {
         Image up = new Image("img/pacbol_up_1.png");
         Image down = new Image("img/pacbol_down_1.png");
 
-
+// Escena #########################################################################
         Group root = new Group();
         Scene theScene = new Scene(root, ANCHO, ALTURA);
         theStage.setScene(theScene);
@@ -180,10 +180,17 @@ public class EscenaCome extends Application {
 
 
     private void checkCollision(Sprite2 sprite2, Fantasma fantasma) {
-        if (sprite2.getBoundary().intersects(fantasma.getBoundary())) {
+//        if (sprite2.getBoundary().intersects(fantasma.getBoundary())) {
+//            System.out.println("x_x");
+//        }
+
+        if((sprite2.getWidth()/2)+ (fantasma.getHeight()/2) > sprite2.distancia(fantasma.getPosX(), fantasma.getPosY())){
             System.out.println("x_x");
         }
+
     }
+
+
 
     /* por si no entiendes algo te dejo link
      * https://stackoverflow.com/questions/30146560/how-to-change-animationtimer-speed*/

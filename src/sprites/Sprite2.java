@@ -4,6 +4,8 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import static java.lang.Math.abs;
+
 public class Sprite2 {
     private Image image;
     private double positionX;
@@ -93,6 +95,8 @@ public class Sprite2 {
     public void setHeight(double height) {
         this.height = height;
     }
-
+    public double distancia(double x, double y){
+        return Math.sqrt(Math.pow((x - positionX),2) + Math.pow((y - positionY),2) );
+    }
 
 }

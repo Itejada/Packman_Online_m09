@@ -17,16 +17,18 @@ public class Fantasma extends Sprite2 {
     private Image[] frameFantasmaU = {new Image("img/fantasma0_0.png"),new Image("img/fantasma0_1.png")};
 
 
-    public Fantasma(Image _image, double x, double y, int ANCHO, int ALTURA) {
+    public Fantasma(Image _image, double x, double y, int ANCHO, int ALTURA, double width,  double height) {
         this.posX = x;
         this.posY = y;
-        this.velX = 4.0f;
-        this.velY = 4.0f;
+        this.velX = 0.1f;
+        this.velY = 0.1f;
         this.dirX = 1;
         this.dirY = 1;
         this.image=_image;
         this.ALTURA= ALTURA;
         this.ANCHO= ANCHO;
+        this.height=height;
+        this.width=width;
     }
 
 
@@ -67,7 +69,7 @@ public class Fantasma extends Sprite2 {
     }
 
     public void render(GraphicsContext gc) {
-        gc.drawImage(image, posX, posY);
+        gc.drawImage(image, posX, posY, width,height);
     }
 
     public void setImage(Image i) {

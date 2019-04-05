@@ -1,4 +1,4 @@
-package model;
+package sprites;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;

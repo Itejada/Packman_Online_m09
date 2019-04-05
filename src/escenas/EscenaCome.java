@@ -11,7 +11,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import model.Fantasma;
+import sprites.Fantasma;
 import sprites.Sprite2;
 
 import java.io.File;
@@ -29,11 +29,8 @@ public class EscenaCome extends Application {
 
     long mCurrentNanoTime=0;
 
-
-
     @Override
     public void start(Stage theStage) {
-
 
         String pathStartSound = "../sounds/pacman_beginning.wav";
         Media media = new Media(new File(pathStartSound).toURI().toString());
@@ -42,7 +39,13 @@ public class EscenaCome extends Application {
 
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, ANCHO, ALTURA);
-        Fantasma fantasma2 = new Fantasma(fimage, ANCHO, ALTURA, ANCHO, ALTURA);
+
+        Fantasma fantasma2 = new Fantasma(fimage, 100, 200, ANCHO, ALTURA);
+
+        Fantasma fantasma3 = new Fantasma(fimage, 20, 33, ANCHO, ALTURA);
+
+        Fantasma fantasma4 = new Fantasma(fimage, 45, 120, ANCHO, ALTURA);
+
 
 
         Sprite2 sprite2 = new Sprite2();
@@ -53,11 +56,8 @@ public class EscenaCome extends Application {
 
         sprite2.setImage(new Image("img/pacbol_0.png"));
         theStage.setTitle("Keyboard Example");
-        //  ImageView iv = new ImageView("img/pacbol_0.png");
 
         Image front = new Image("img/pacbol_0.png");
-        Image left = new Image("img/pacbol_7.png");
-        Image rigth = new Image("img/pacbol_1.png");
         Image up = new Image("img/pacbol_up_1.png");
         Image down = new Image("img/pacbol_down_1.png");
 
@@ -105,21 +105,24 @@ public class EscenaCome extends Application {
                 gc.setFill(Color.BLUE);
                 gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-                fantasma.setImage(fimage);
-                fantasma2.setImage(fimage);
-
-
-                fantasma.move();
+                fantasma.move(currentNanoTime);
+                fantasma2.move(currentNanoTime);
+                fantasma3.move(currentNanoTime);
+                fantasma4.move(currentNanoTime);
 
                 movePackman(input, sprite2, anchoSprite, up, altoSprite, down);
 
                 checkCollision(sprite2, fantasma);
+                checkCollision(sprite2, fantasma2);
+                checkCollision(sprite2, fantasma3);
+                checkCollision(sprite2, fantasma4);
 
-                sprite2.render(gc);
                 fantasma.render(gc);
+                fantasma2.render(gc);
+                fantasma3.render(gc);
+                fantasma4.render(gc);
+                sprite2.render(gc);
 
-
-                // gc.drawImage(leftG, x, y);
 
             }
         }.start();
@@ -135,7 +138,6 @@ public class EscenaCome extends Application {
                 if (x > 0) {
                     x -= velocidad;
                     animation(sprite2, "LEFT");
-                    //sprite2.setImage(left);
                 } else {
                     x = 0;
                 }
@@ -145,14 +147,11 @@ public class EscenaCome extends Application {
                 if (x < ANCHO - anchoSprite) {
                     x += velocidad;
                     animation( sprite2, "RIGHT");
-
-                    //sprite2.setImage(rigth);
                 } else {
                     x = ANCHO - anchoSprite;
                 }
             }
-        }//hasta qui el if de izquierda/derecha
-
+        }
 
         //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
         if (input.contains("UP") != input.contains("DOWN")) {
@@ -160,7 +159,6 @@ public class EscenaCome extends Application {
                 if (y > 0) {
                     y -= velocidad;
                     sprite2.setImage(up);
-                    // iv.setRotate(0);
                 } else {
                     y = 0;
                 }
@@ -169,14 +167,12 @@ public class EscenaCome extends Application {
                 if (y < ALTURA - altoSprite) {
                     y += velocidad;
                     sprite2.setImage(down);
-                    //iv.setRotate(180);
                 } else {
                     y = ALTURA - altoSprite;
                 }
 
             }
-        }//hasta aqui el if de arriba/abajo
-
+        }
         sprite2.setPositionX(x);
         sprite2.setPositionY(y);
 
@@ -199,12 +195,8 @@ public class EscenaCome extends Application {
                 sprite2.setImage(framesL[time]);
             }else{
                 sprite2.setImage(framesR[time]);
-
             }
-
-
-
-
     }
+
 
 }

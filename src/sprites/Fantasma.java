@@ -1,4 +1,4 @@
-package model;
+package sprites;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,16 +10,12 @@ public class Fantasma extends Sprite2 {
     private Image image;
     private double posX, posY, velX, velY, width, height;
     private int dirX, dirY;
-     int ALTURA, ANCHO;
+    private int ALTURA, ANCHO;
+    private Image[] frameFantasmaR = {new Image("img/fantasma4_0.png"),new Image("img/fantasma4_1.png")};
+    private Image[] frameFantasmaL ={new Image("img/fantasma3_0.png"),new Image("img/fantasma3_1.png")};
+    private Image[] frameFantasmaD = {new Image("img/fantasma2_0.png"),new Image("img/fantasma2_1.png")};
+    private Image[] frameFantasmaU = {new Image("img/fantasma0_0.png"),new Image("img/fantasma0_1.png")};
 
-    public Fantasma() {
-        this.posX = 0.0f;
-        this.posY = 0.0f;
-        this.velX = 0.5f;
-        this.velY = 0.5f;
-        this.dirX = 1;
-        this.dirY = 1;
-    }
 
     public Fantasma(Image _image, double x, double y, int ANCHO, int ALTURA) {
         this.posX = x;
@@ -34,20 +30,39 @@ public class Fantasma extends Sprite2 {
     }
 
 
-    public void move() {
+    public void move(long currentNanoTime) {
         if (dirX == 1) {
             posX += velX;
             if (posX >= ANCHO - width) dirX = (-1) * dirX;
+            this.animation(currentNanoTime,"RIGHT");
         } else {
             posX -= velX;
             if (posX <= 0) dirX = (-1) * dirX;
+            this.animation(currentNanoTime,"LEFT");
         }
         if (dirY == 1) {
             posY += velY;
             if (posY >= ALTURA - height) dirY = (-1) * dirY;
+            this.animation(currentNanoTime,"DOWN");
         } else {
             posY -= velY;
             if (posY <= 0) dirY = (-1) * dirY;
+            this.animation(currentNanoTime,"UP");
+        }
+    }
+
+    private void animation(long mCurrentNanoTime,String dir) {
+
+        //aqui el metodo a actualizar
+        int time= (int) ((mCurrentNanoTime/100000000) % 2);
+        if (dir.equals("LEFT")) {
+            this.setImage(frameFantasmaL[time]);
+        }else if(dir.equals("RIGHT")){
+            this.setImage(frameFantasmaR[time]);
+        }else if(dir.equals("UP")) {
+            this.setImage(frameFantasmaU[time]);
+        }else {
+            this.setImage(frameFantasmaD[time]);
         }
     }
 

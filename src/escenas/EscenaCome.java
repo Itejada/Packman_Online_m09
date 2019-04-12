@@ -20,7 +20,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class EscenaCome extends Application {
-//
+//hola
     private double x = 0;
     private double y = 0;
     double velocidad = 3;

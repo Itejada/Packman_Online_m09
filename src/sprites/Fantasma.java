@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import sprites.Sprite2;
 
 public class Fantasma {
-
+//hola
     private Image image;
     private double posX, posY, velX, velY, width, height;
     private int dirX, dirY;

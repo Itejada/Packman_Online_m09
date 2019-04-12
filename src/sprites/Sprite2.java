@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class Sprite2 {
+    //hola
     private Image image;
     private double positionX;
     private double positionY;

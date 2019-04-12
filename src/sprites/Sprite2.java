@@ -129,7 +129,7 @@ public class Sprite2 {
 
     public void movePackman(ArrayList<String> input, Sprite2 sprite2, int anchoSprite, Image up, int altoSprite, Image down,long mcurrentNanoTime) {
 
-        if (input.contains("LEFT") != input.contains("RIGHT") || input.contains("UP") != input.contains("DOWN") ) {
+        if (input.contains("LEFT") != input.contains("RIGHT")) {
             if (input.contains("LEFT")) {
                 if (positionX > 0) {
                     animation(sprite2, "LEFT",mcurrentNanoTime);
@@ -150,7 +150,14 @@ public class Sprite2 {
                     isPlaying=false;
                 }
             }
-            else if (input.contains("UP")) {
+            else {
+                isPlaying=false;
+            }
+        }
+
+        //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
+        if (input.contains("UP") != input.contains("DOWN")) {
+            if (input.contains("UP")) {
                 if (positionY > 0) {
                     sprite2.setImage(up);
                     positionY -= velocityY;
@@ -169,39 +176,10 @@ public class Sprite2 {
                     positionY = ALTURA - altoSprite;
                     isPlaying=false;
                 }
-            }
-            else {
+            }else {
                 isPlaying=false;
             }
-        }else {
-            isPlaying=false;
         }
-
-        //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
-        /*if (input.contains("UP") != input.contains("DOWN")) {
-            if (input.contains("UP")) {
-                if (positionY > 0) {
-                    sprite2.setImage(up);
-                    positionY -= velocityY;
-                    isPlaying=true;
-                } else {
-                    positionY = 0;
-                    isPlaying=false;
-                }
-            }
-            if (input.contains("DOWN")) {
-                if (positionY < ALTURA - altoSprite) {
-                    sprite2.setImage(down);
-                    positionY += velocityY;
-                    isPlaying=true;
-                } else {
-                    positionY = ALTURA - altoSprite;
-                    isPlaying=false;
-                }
-            }
-        }else {
-            isPlaying=false;
-        }*/
         sprite2.setPositionX(positionX);
         sprite2.setPositionY(positionY);
     }

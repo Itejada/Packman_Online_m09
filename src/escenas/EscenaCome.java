@@ -95,6 +95,7 @@ public class EscenaCome extends Application {
         theScene.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
+                    sprite2.isPlaying=false;
                     input.remove(code);
                     sprite2.setImage(front);
                 });

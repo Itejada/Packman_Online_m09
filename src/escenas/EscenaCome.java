@@ -41,6 +41,7 @@ public class EscenaCome extends Application {
         startSound.setAutoPlay(true);
 
 
+
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, velocidad, velocidad,ANCHO, ALTURA, 32,32);
 
@@ -51,7 +52,6 @@ public class EscenaCome extends Application {
         Fantasma fantasma4 = new Fantasma(fimage, 45, 120,velocidad, velocidad, ANCHO, ALTURA,32,32);
 
         Image image = new Image("img/pacbol_0.png");
-
 
         Sprite2 sprite2 = new Sprite2(image,x,y,velocidad,velocidad,ALTURA,ANCHO,28,28);
         sound= new sound(sprite2);
@@ -75,10 +75,6 @@ public class EscenaCome extends Application {
         root.getChildren().add(canvas);
 
 
-        for (int i = 0; i < 6; i++) {
-            framesR[i] = new Image("img/pacbol_" + (i + 1) + ".png");
-            framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
-        }
 
         ArrayList<String> input = new ArrayList<>();
 

@@ -83,7 +83,7 @@ public class EscenaCome extends Application {
         theScene.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
-                    sprite2.playSoundPacmanEating();
+                    //sprite2.playSoundPacmanEating();
 
                     // only add once... prevent duplicates
                     if (!input.contains(code))
@@ -94,7 +94,7 @@ public class EscenaCome extends Application {
         theScene.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
-                    sprite2.stopSoundPacmanEating(sprite2.getMoveSound());
+                    //sprite2.stopSoundPacmanEating(sprite2.getMoveSound());
                     input.remove(code);
                     sprite2.setImage(front);
                 });

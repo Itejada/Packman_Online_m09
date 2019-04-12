@@ -132,7 +132,7 @@ public class Sprite2 {
                 if (positionX > 0) {
                     animation(sprite2, "LEFT",mcurrentNanoTime);
                     positionX -= velocityX;
-                    //playSoundPacmanEating();
+                    playSoundPacmanEating();
                 } else {
                     positionX = 0;
                 }
@@ -142,7 +142,7 @@ public class Sprite2 {
                 if (positionX < ANCHO - anchoSprite) {
                     animation(sprite2, "RIGHT",mcurrentNanoTime);
                     positionX += velocityX;
-                    //playSoundPacmanEating();
+                    playSoundPacmanEating();
                 } else {
                     positionX = ANCHO - anchoSprite;
                 }
@@ -155,7 +155,7 @@ public class Sprite2 {
                 if (positionY > 0) {
                     sprite2.setImage(up);
                     positionY -= velocityY;
-                    //playSoundPacmanEating();
+                    playSoundPacmanEating();
                 } else {
                     positionY = 0;
                 }
@@ -200,11 +200,9 @@ public class Sprite2 {
     }
 
     public void playSoundPacmanEating() {
-        /*if(moveSound.getCurrentTime().greaterThanOrEqualTo(moveSound.getBufferProgressTime())) {
+        if(moveSound.getCurrentTime().greaterThanOrEqualTo(moveSound.getBufferProgressTime())) {
             moveSound.seek(Duration.millis(20));
         }
-        moveSound.play();*/
-        moveSound.setCycleCount(MediaPlayer.INDEFINITE);
         moveSound.play();
     }
 

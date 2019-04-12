@@ -24,6 +24,7 @@ public class Sprite2 {
     private String pathMoveSound = "src/sounds/pacman_chomp.wav";
     private Media media = new Media(new File(pathMoveSound).toURI().toString());
     private MediaPlayer moveSound = new MediaPlayer(media);
+    public boolean isPlaying = false;
 
     public Sprite2(Image image,double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double width, double height) {
         this.image=image;
@@ -39,6 +40,7 @@ public class Sprite2 {
             framesR[i] = new Image("img/pacbol_" + (i + 1) + ".png");
             framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
         }
+        moveSound.setCycleCount(MediaPlayer.INDEFINITE);
     }
 
     // ...
@@ -127,49 +129,79 @@ public class Sprite2 {
 
     public void movePackman(ArrayList<String> input, Sprite2 sprite2, int anchoSprite, Image up, int altoSprite, Image down,long mcurrentNanoTime) {
 
-        if (input.contains("LEFT") != input.contains("RIGHT")) {
+        if (input.contains("LEFT") != input.contains("RIGHT") || input.contains("UP") != input.contains("DOWN") ) {
             if (input.contains("LEFT")) {
                 if (positionX > 0) {
                     animation(sprite2, "LEFT",mcurrentNanoTime);
                     positionX -= velocityX;
-                    playSoundPacmanEating();
+                    isPlaying=true;
                 } else {
                     positionX = 0;
+                    isPlaying=false;
                 }
             }
-
-            if (input.contains("RIGHT")) {
+            else if (input.contains("RIGHT")) {
                 if (positionX < ANCHO - anchoSprite) {
                     animation(sprite2, "RIGHT",mcurrentNanoTime);
                     positionX += velocityX;
-                    playSoundPacmanEating();
+                    isPlaying=true;
                 } else {
                     positionX = ANCHO - anchoSprite;
+                    isPlaying=false;
                 }
             }
+            else if (input.contains("UP")) {
+                if (positionY > 0) {
+                    sprite2.setImage(up);
+                    positionY -= velocityY;
+                    isPlaying=true;
+                } else {
+                    positionY = 0;
+                    isPlaying=false;
+                }
+            }
+            else if (input.contains("DOWN")) {
+                if (positionY < ALTURA - altoSprite) {
+                    sprite2.setImage(down);
+                    positionY += velocityY;
+                    isPlaying=true;
+                } else {
+                    positionY = ALTURA - altoSprite;
+                    isPlaying=false;
+                }
+            }
+            else {
+                isPlaying=false;
+            }
+        }else {
+            isPlaying=false;
         }
 
         //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
-        if (input.contains("UP") != input.contains("DOWN")) {
+        /*if (input.contains("UP") != input.contains("DOWN")) {
             if (input.contains("UP")) {
                 if (positionY > 0) {
                     sprite2.setImage(up);
                     positionY -= velocityY;
-                    playSoundPacmanEating();
+                    isPlaying=true;
                 } else {
                     positionY = 0;
+                    isPlaying=false;
                 }
             }
             if (input.contains("DOWN")) {
                 if (positionY < ALTURA - altoSprite) {
                     sprite2.setImage(down);
                     positionY += velocityY;
-                    //playSoundPacmanEating();
+                    isPlaying=true;
                 } else {
                     positionY = ALTURA - altoSprite;
+                    isPlaying=false;
                 }
             }
-        }
+        }else {
+            isPlaying=false;
+        }*/
         sprite2.setPositionX(positionX);
         sprite2.setPositionY(positionY);
     }
@@ -195,18 +227,14 @@ public class Sprite2 {
         }
     }
 
-    public MediaPlayer getMoveSound() {
-        return moveSound;
-    }
-
     public void playSoundPacmanEating() {
-        if(moveSound.getCurrentTime().greaterThanOrEqualTo(moveSound.getBufferProgressTime())) {
-            moveSound.seek(Duration.millis(20));
+        if(isPlaying) {
+            moveSound.play();
         }
-        moveSound.play();
+        else {
+            moveSound.stop();
+            isPlaying=false;
+        }
     }
 
-    public void stopSoundPacmanEating(MediaPlayer moveSound) {
-        moveSound.stop();
-    }
 }

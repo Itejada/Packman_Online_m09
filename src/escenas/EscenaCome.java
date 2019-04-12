@@ -12,6 +12,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sounds.sound;
 import sprites.Fantasma;
 import sprites.Sprite2;
 
@@ -27,6 +28,7 @@ public class EscenaCome extends Application {
     private static final int ALTURA = 450;
     Image[] framesR = new Image[6];
     Image[] framesL = new Image[6];
+    sounds.sound sound;
 
     long mCurrentNanoTime=0;
 
@@ -52,8 +54,8 @@ public class EscenaCome extends Application {
 
 
         Sprite2 sprite2 = new Sprite2(image,x,y,velocidad,velocidad,ALTURA,ANCHO,28,28);
-        sprite2.setHeight(28);
-        sprite2.setWidth(29);
+        sound= new sound(sprite2);
+
         int anchoSprite = (int) sprite2.getWidth();
         int altoSprite = (int) sprite2.getHeight();
 
@@ -83,7 +85,6 @@ public class EscenaCome extends Application {
         theScene.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
-                    //sprite2.playSoundPacmanEating();
 
                     // only add once... prevent duplicates
                     if (!input.contains(code))
@@ -94,7 +95,6 @@ public class EscenaCome extends Application {
         theScene.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
-                    //sprite2.stopSoundPacmanEating(sprite2.getMoveSound());
                     input.remove(code);
                     sprite2.setImage(front);
                 });
@@ -103,7 +103,7 @@ public class EscenaCome extends Application {
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
-
+                sound.run();
                 mCurrentNanoTime=currentNanoTime;
                 // Clear the canvas
                 gc.clearRect(0, 0, ANCHO, ALTURA);

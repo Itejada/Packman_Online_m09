@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import sprites.Sprite2;
 
-public class Fantasma extends Sprite2 {
+public class Fantasma {
 
     private Image image;
     private double posX, posY, velX, velY, width, height;
@@ -17,20 +17,69 @@ public class Fantasma extends Sprite2 {
     private Image[] frameFantasmaU = {new Image("img/fantasma0_0.png"),new Image("img/fantasma0_1.png")};
 
 
-    public Fantasma(Image _image, double x, double y, int ANCHO, int ALTURA, double width,  double height) {
+    public Fantasma(Image _image, double x, double y,double velX,double velY,int ANCHO, int ALTURA, double width,  double height) {
+        this.image=_image;
         this.posX = x;
         this.posY = y;
-        this.velX = 0.1f;
-        this.velY = 0.1f;
+        this.velX=3;
+        this.velY=3;
+        this.width=width;
+        this.height=height;
         this.dirX = 1;
         this.dirY = 1;
-        this.image=_image;
         this.ALTURA= ALTURA;
         this.ANCHO= ANCHO;
-        this.height=height;
-        this.width=width;
+        /*this.velX = 0.1f;
+        this.velY = 0.1f;*/
     }
 
+    public double getPosX() {
+        return posX;
+    }
+
+    public double getPosY() {
+        return posY;
+    }
+
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(double posY) {
+        this.posY = posY;
+    }
+
+    public double getVelocityX() {
+        return velX;
+    }
+
+    public void setVelocityX(double velocityX) {
+        this.velX = velocityX;
+    }
+
+    public double getVelocityY() {
+        return velY;
+    }
+
+    public void setVelocityY(double velocityY) {
+        this.velY = velocityY;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
 
     public void move(long currentNanoTime) {
         if (dirX == 1) {
@@ -53,7 +102,7 @@ public class Fantasma extends Sprite2 {
         }
     }
 
-    private void animation(long mCurrentNanoTime,String dir) {
+    public void animation(long mCurrentNanoTime,String dir) {
 
         //aqui el metodo a actualizar
         int time= (int) ((mCurrentNanoTime/100000000) % 2);
@@ -68,30 +117,14 @@ public class Fantasma extends Sprite2 {
         }
     }
 
-    public void render(GraphicsContext gc) {
-        gc.drawImage(image, posX, posY, width,height);
-    }
-
     public void setImage(Image i) {
         image = i;
         width = image.getWidth();
         height = image.getHeight();
     }
 
-    public double getPosX() {
-        return posX;
-    }
-
-    public double getPosY() {
-        return posY;
-    }
-
-    public void setPosX(double posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(double posY) {
-        this.posY = posY;
+    public void render(GraphicsContext gc) {
+        gc.drawImage(image, posX, posY, width,height);
     }
 
     public Rectangle2D getBoundary()

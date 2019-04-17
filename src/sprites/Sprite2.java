@@ -9,7 +9,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class Sprite2 {
-    //hola
     private Image image;
     private double positionX;
     private double positionY;
@@ -130,7 +129,7 @@ public class Sprite2 {
     public void movePackman(ArrayList<String> input, Sprite2 sprite2, int anchoSprite, Image up, int altoSprite, Image down,long mcurrentNanoTime) {
 
         if (input.contains("LEFT") != input.contains("RIGHT")) {
-            if (input.contains("LEFT")) {
+            if ((input.contains("LEFT") ||input.contains("A"))) {
                 if (positionX > 0) {
                     animation(sprite2, "LEFT",mcurrentNanoTime);
                     positionX -= velocityX;
@@ -140,7 +139,7 @@ public class Sprite2 {
                     isPlaying=false;
                 }
             }
-            else if (input.contains("RIGHT")) {
+            else if ((input.contains("RIGHT") ||input.contains("D"))) {
                 if (positionX < ANCHO - anchoSprite) {
                     animation(sprite2, "RIGHT",mcurrentNanoTime);
                     positionX += velocityX;
@@ -156,7 +155,7 @@ public class Sprite2 {
         }
 
         //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
-        if (input.contains("UP") != input.contains("DOWN")) {
+        if ((input.contains("UP") ||input.contains("W")) != (input.contains("DOWN")||input.contains("s"))) {
             if (input.contains("UP")) {
                 if (positionY > 0) {
                     sprite2.setImage(up);

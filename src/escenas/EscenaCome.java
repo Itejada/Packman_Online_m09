@@ -20,10 +20,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class EscenaCome extends Application {
-//hola
+
     private double x = 0;
     private double y = 0;
-    double velocidad = 3;
+    double velocidad = 5;
     private static final int ANCHO = 650;
     private static final int ALTURA = 450;
     Image[] framesR = new Image[6];
@@ -41,17 +41,17 @@ public class EscenaCome extends Application {
         startSound.setAutoPlay(true);
 
 
-
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, velocidad, velocidad,ANCHO, ALTURA, 32,32);
 
         Fantasma fantasma2 = new Fantasma(fimage, 100, 200, velocidad, velocidad, ANCHO, ALTURA, 32,32);
 
-        Fantasma fantasma3 = new Fantasma(fimage, 20, 33,velocidad, velocidad, ANCHO, ALTURA,32,32);
+        Fantasma fantasma3 = new Fantasma(fimage, 220, 33,velocidad, velocidad, ANCHO, ALTURA,32,32);
 
-        Fantasma fantasma4 = new Fantasma(fimage, 45, 120,velocidad, velocidad, ANCHO, ALTURA,32,32);
+        Fantasma fantasma4 = new Fantasma(fimage, ANCHO, 0,velocidad, velocidad, ANCHO, ALTURA,32,32);
 
         Image image = new Image("img/pacbol_0.png");
+
 
         Sprite2 sprite2 = new Sprite2(image,x,y,velocidad,velocidad,ALTURA,ANCHO,28,28);
         sound= new sound(sprite2);

@@ -10,29 +10,18 @@ public class Sounds extends Thread {
         this.sprite2 = sprite2;
     }
 
-    public Sounds() {
-    }
 
     @Override
     public void run() {
         for (; ; ) {
-            //while (!sprite2.isPlaying) {
                 sprite2.playSoundPacmanEating();
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //}
         }
     }
 
-//    public void waitSound(){
-//        try {
-//            this.wait();
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
 }

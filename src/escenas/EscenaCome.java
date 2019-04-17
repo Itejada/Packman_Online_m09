@@ -11,7 +11,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import sounds.Sound;
 import sounds.Sounds;
 import sprites.Fantasma;
 import sprites.Sprite2;
@@ -20,7 +19,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class EscenaCome extends Application {
-    //hola
+
     private double x = 0;
     private double y = 0;
     double velocidad = 5;
@@ -72,7 +71,6 @@ public class EscenaCome extends Application {
         Canvas canvas = new Canvas(ANCHO, ALTURA);
         root.getChildren().add(canvas);
 
-        //Sounds sound=new Sounds();
 //#################################  Detectar teclas ########################################
         ArrayList<String> input = new ArrayList<>();
 
@@ -135,5 +133,5 @@ public class EscenaCome extends Application {
         }.start();
 
         theStage.show();
-    }      ;
+    }
 }

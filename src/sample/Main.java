@@ -6,10 +6,8 @@ import javafx.stage.Stage;
 
 
 public class Main extends Application {
-    //hola
 
     public static void main(String[] args) {
-
         launch(args);
     }
 
@@ -18,6 +16,5 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         EscenaCome escenaCome= new EscenaCome();
         escenaCome.start(primaryStage);
-
     }
 }

@@ -11,8 +11,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import sounds.sound;
+import sounds.Sounds;
 import sprites.Fantasma;
 import sprites.Sprite2;
 
@@ -28,7 +27,7 @@ public class EscenaCome extends Application {
     private static final int ALTURA = 450;
     Image[] framesR = new Image[6];
     Image[] framesL = new Image[6];
-    sounds.sound sound;
+    Sounds sound;
 
     long mCurrentNanoTime=0;
 
@@ -43,18 +42,15 @@ public class EscenaCome extends Application {
 
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, velocidad, velocidad,ANCHO, ALTURA, 32,32);
-
         Fantasma fantasma2 = new Fantasma(fimage, 100, 200, velocidad, velocidad, ANCHO, ALTURA, 32,32);
-
         Fantasma fantasma3 = new Fantasma(fimage, 220, 33,velocidad, velocidad, ANCHO, ALTURA,32,32);
-
         Fantasma fantasma4 = new Fantasma(fimage, ANCHO, 0,velocidad, velocidad, ANCHO, ALTURA,32,32);
 
         Image image = new Image("img/pacbol_0.png");
 
 
         Sprite2 sprite2 = new Sprite2(image,x,y,velocidad,velocidad,ALTURA,ANCHO,28,28);
-        sound= new sound(sprite2);
+        sound= new Sounds(sprite2);
 
         int anchoSprite = (int) sprite2.getWidth();
         int altoSprite = (int) sprite2.getHeight();
@@ -74,12 +70,20 @@ public class EscenaCome extends Application {
         Canvas canvas = new Canvas(ANCHO, ALTURA);
         root.getChildren().add(canvas);
 
-
-
+         //Sounds sound=new Sounds();
+//#################################  Detectar teclas ########################################
         ArrayList<String> input = new ArrayList<>();
+        sound.start();
 
         theScene.setOnKeyPressed(
                 e -> {
+
+                    if(input.size()==0){
+
+
+                    }
+                    //sound.notifyAll();
+
                     String code = e.getCode().toString();
 
                     // only add once... prevent duplicates
@@ -90,6 +94,8 @@ public class EscenaCome extends Application {
 
         theScene.setOnKeyReleased(
                 e -> {
+                    //sound.waitSound();
+                    //sound.notifyAll();
                     String code = e.getCode().toString();
                     sprite2.isPlaying=false;
                     input.remove(code);
@@ -100,7 +106,7 @@ public class EscenaCome extends Application {
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
-                sound.run();
+               // sound.run();
                 mCurrentNanoTime=currentNanoTime;
                 // Clear the canvas
                 gc.clearRect(0, 0, ANCHO, ALTURA);

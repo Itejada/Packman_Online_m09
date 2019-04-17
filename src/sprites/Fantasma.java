@@ -84,20 +84,20 @@ public class Fantasma {
     public void move(long currentNanoTime) {
 
         if (dirX == 1) {
-            posX += velX+(Math.random()*(posX/95));
+            posX += velX+(Math.random()*(posX/55));
             if (posX >= ANCHO - width) dirX = (-1) * dirX;
             this.animation(currentNanoTime,"RIGHT");
         } else {
-            posX -= velX+(Math.random()*(posX/95));
+            posX -= velX+(Math.random()*(posX/75));
             if (posX <= 0) dirX = (-1) * dirX;
             this.animation(currentNanoTime,"LEFT");
         }
         if (dirY == 1) {
-            posY += velY+(Math.random()*(posY/95));
+            posY += velY+(Math.random()*(posY/50));
             if (posY >= ALTURA - height) dirY = (-1) * dirY;
             this.animation(currentNanoTime,"DOWN");
         } else {
-            posY -= velY+(Math.random()*(posY/95));
+            posY -= velY+(Math.random()*(posY/25));
             if (posY <= 0) dirY = (-1) * dirY;
             this.animation(currentNanoTime,"UP");
         }

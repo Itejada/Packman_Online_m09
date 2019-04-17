@@ -5,6 +5,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -20,10 +22,11 @@ public class Sprite2 {
     Image[] framesR = new Image[6];
     Image[] framesL = new Image[6];
 
-    private String pathMoveSound = "src/sounds/pacman_chomp.wav";
+    private String pathMoveSound = "src/sounds/PacmanWakaWaka04.wav";
     private Media media = new Media(new File(pathMoveSound).toURI().toString());
     private MediaPlayer moveSound = new MediaPlayer(media);
     public boolean isPlaying = false;
+    public boolean xd = false;
 
     public Sprite2(Image image,double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double width, double height) {
         this.image=image;

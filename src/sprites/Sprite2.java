@@ -188,6 +188,11 @@ public class Sprite2 {
 
         if((sprite2.getWidth()/2)+ (fantasma.getHeight()/2) > sprite2.distancia(fantasma.getPosX(), fantasma.getPosY())){
             System.out.println("x_x");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
     }

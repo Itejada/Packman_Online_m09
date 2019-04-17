@@ -18,7 +18,7 @@ public class Sounds extends Thread {
         for (; ; ) {
             //while (!sprite2.isPlaying) {
                 sprite2.playSoundPacmanEating();
-                System.out.println(sprite2.isPlaying);
+                //System.out.println();
             //}
         }
     }

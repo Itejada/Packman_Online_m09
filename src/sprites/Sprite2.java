@@ -128,7 +128,7 @@ public class Sprite2 {
 
     public void movePackman(ArrayList<String> input, Sprite2 sprite2, int anchoSprite, Image up, int altoSprite, Image down,long mcurrentNanoTime) {
 
-        if (input.contains("LEFT") != input.contains("RIGHT")) {
+        if ((input.contains("LEFT") ||input.contains("A")) !=(input.contains("RIGHT") ||input.contains("D"))){
             if ((input.contains("LEFT") ||input.contains("A"))) {
                 if (positionX > 0) {
                     animation(sprite2, "LEFT",mcurrentNanoTime);
@@ -155,8 +155,8 @@ public class Sprite2 {
         }
 
         //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
-        if ((input.contains("UP") ||input.contains("W")) != (input.contains("DOWN")||input.contains("s"))) {
-            if (input.contains("UP")) {
+        if ((input.contains("UP") ||input.contains("W")) != (input.contains("DOWN")||input.contains("S"))) {
+            if ((input.contains("UP") ||input.contains("W"))) {
                 if (positionY > 0) {
                     sprite2.setImage(up);
                     positionY -= velocityY;
@@ -166,7 +166,7 @@ public class Sprite2 {
                     isPlaying=false;
                 }
             }
-            else if (input.contains("DOWN")) {
+            else if ((input.contains("DOWN")||input.contains("S"))) {
                 if (positionY < ALTURA - altoSprite) {
                     sprite2.setImage(down);
                     positionY += velocityY;
@@ -182,6 +182,7 @@ public class Sprite2 {
         sprite2.setPositionX(positionX);
         sprite2.setPositionY(positionY);
     }
+
 
     public void checkCollision(Sprite2 sprite2, Fantasma fantasma) {
 

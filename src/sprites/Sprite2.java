@@ -25,8 +25,8 @@ public class Sprite2 {
     private String pathMoveSound = "src/sounds/PacmanWakaWaka04.wav";
     private Media media = new Media(new File(pathMoveSound).toURI().toString());
     private MediaPlayer moveSound = new MediaPlayer(media);
+
     public boolean isPlaying = false;
-    public boolean xd = false;
 
     public Sprite2(Image image,double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double width, double height) {
         this.image=image;
@@ -43,6 +43,7 @@ public class Sprite2 {
             framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
         }
         moveSound.setCycleCount(MediaPlayer.INDEFINITE);
+        moveSound.setVolume(0.25);
     }
 
     // ...
@@ -187,15 +188,18 @@ public class Sprite2 {
     }
 
 
-    public void checkCollision(Sprite2 sprite2, Fantasma fantasma) {
+    public void checkCollision(Sprite2 sprite2, Fantasma fantasma, MediaPlayer startSound) {
 
         if((sprite2.getWidth()/2)+ (fantasma.getHeight()/2) > sprite2.distancia(fantasma.getPosX(), fantasma.getPosY())){
             System.out.println("x_x");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+            setPositionY(0);
+            setPositionX(0);
+            fantasma.setPosX((Math.random()*200)+100);
+            fantasma.setPosY((Math.random()*200)+100);
+            startSound.seek(Duration.ZERO);
+            startSound.play();
+
         }
 
     }

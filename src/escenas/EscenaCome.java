@@ -1,7 +1,6 @@
 package escenas;
 
 import javafx.animation.AnimationTimer;
-import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -18,19 +17,23 @@ import sprites.Sprite2;
 import java.io.File;
 import java.util.ArrayList;
 
-public class EscenaCome extends Application {
+public class EscenaCome extends Scene {
 
     private double x = 0;
     private double y = 0;
     double velocidad = 5;
     private static final int ANCHO = 650;
     private static final int ALTURA = 450;
-    Image[] framesR = new Image[6];
-    Image[] framesL = new Image[6];
+    private Group root;
 
     long mCurrentNanoTime=0;
 
-    @Override
+    public EscenaCome(Group root) {
+        super(root);
+        this.root=root;
+        this.start(MyStage.getStage());
+    }
+
     public void start(Stage theStage) {
 
         String pathStartSound = "src/sounds/pacman_beginning.wav";
@@ -38,8 +41,6 @@ public class EscenaCome extends Application {
         MediaPlayer startSound = new MediaPlayer(media);
         startSound.setVolume(0.27);
         startSound.setAutoPlay(true);
-
-
 
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, velocidad, velocidad,ANCHO, ALTURA, 24,25);
@@ -50,7 +51,7 @@ public class EscenaCome extends Application {
         Image image = new Image("img/pacbol_0.png");
 
         Sprite2 sprite2 = new Sprite2(image,x,y,velocidad,velocidad,ALTURA,ANCHO,24,24);
-       Sounds sound= new Sounds(sprite2);
+        Sounds sound= new Sounds(sprite2);
 
 
         int anchoSprite = (int) sprite2.getWidth();
@@ -63,18 +64,13 @@ public class EscenaCome extends Application {
         Image up = new Image("img/pacbol_up_1.png");
         Image down = new Image("img/pacbol_down_1.png");
 
-// Escena #########################################################################
-        Group root = new Group();
-        Scene theScene = new Scene(root, ANCHO, ALTURA);
-        theStage.setScene(theScene);
-
         Canvas canvas = new Canvas(ANCHO, ALTURA);
         root.getChildren().add(canvas);
 
 //#################################  Detectar teclas ########################################
         ArrayList<String> input = new ArrayList<>();
 
-        theScene.setOnKeyPressed(
+        this.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
 
@@ -84,7 +80,7 @@ public class EscenaCome extends Application {
 
                 });
 
-        theScene.setOnKeyReleased(
+        this.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
                     sprite2.isPlaying=false;

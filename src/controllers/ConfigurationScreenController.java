@@ -32,13 +32,9 @@ public class ConfigurationScreenController {
     ChoiceBox selectSkin;
 
 
-    public void init() {
-        //volume.setValue(ConfigurationGame.getVolume());
+    public void initialize() {
+        volume.setValue(ConfigurationGame.getVolume()*100);
         System.out.println(ConfigurationGame.getVolume());
-    }
-
-    public void saveChanges() {
-
     }
 
     public void back() throws IOException {
@@ -52,12 +48,16 @@ public class ConfigurationScreenController {
     }
 
     public void setVolume(){
+        if(CBVolume.isSelected()) {
+            CBVolume.setSelected(false);
+        }
         double volume2 = volume.getValue() / 100;
         ConfigurationGame.setVolume(volume2);
     }
 
     public void disableVolume() {
         volume.setValue(0);
+        ConfigurationGame.setVolume(0);
     }
 
 

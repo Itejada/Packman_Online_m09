@@ -6,13 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Sprites mejorados">
-      <change afterPath="$PROJECT_DIR$/src/escenas/Hud.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Comportamientos y hud">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/escenas/EscenaCome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escenas/EscenaCome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/Bolita.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/Bolita.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/Fantasma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/Fantasma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/Packman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/Packman.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,13 +84,13 @@
         <counts>
           <entry key="dummy" value="8" />
           <entry key="java" value="3805" />
-          <entry key="txt" value="77" />
+          <entry key="txt" value="103" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="3805" />
-          <entry key="PLAIN_TEXT" value="85" />
+          <entry key="PLAIN_TEXT" value="111" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -198,8 +193,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sprites/Packman.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="208" column="34" lean-forward="true" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
+            <state relative-caret-position="293">
+              <caret line="207" column="47" lean-forward="true" selection-start-line="207" selection-start-column="47" selection-end-line="207" selection-end-column="47" />
               <folding>
                 <element signature="e#1810#1811#0" expanded="true" />
                 <element signature="e#1869#1870#0" expanded="true" />
@@ -362,7 +357,7 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555698695850" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555700565993" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Hospital" />
@@ -802,7 +797,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555681387573</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Comportamientos y hud">
+      <created>1555699176332</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1555699176332</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -903,7 +905,8 @@
     <MESSAGE value="xd" />
     <MESSAGE value="Bolita, velocidad y hitbox de fantasmas" />
     <MESSAGE value="Sprites mejorados" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sprites mejorados" />
+    <MESSAGE value="Comportamientos y hud" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comportamientos y hud" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1185,8 +1188,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sprites/Packman.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="208" column="34" lean-forward="true" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
+        <state relative-caret-position="293">
+          <caret line="207" column="47" lean-forward="true" selection-start-line="207" selection-start-column="47" selection-end-line="207" selection-end-column="47" />
           <folding>
             <element signature="e#1810#1811#0" expanded="true" />
             <element signature="e#1869#1870#0" expanded="true" />

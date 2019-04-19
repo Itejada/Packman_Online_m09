@@ -3,7 +3,6 @@ package sprites;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import sprites.Sprite2;
 
 public class Fantasma {
 
@@ -21,8 +20,8 @@ public class Fantasma {
         this.image=_image;
         this.posX = x;
         this.posY = y;
-        this.velX= velX;
-        this.velY=velY;
+        this.velX= velX/2;
+        this.velY=velY/2;
         this.width=width;
         this.height=height;
         this.dirX = 1;
@@ -132,7 +131,7 @@ public class Fantasma {
         return new Rectangle2D(posX,posY,width,height);
     }
 
-    public boolean intersects(Sprite2 s)
+    public boolean intersects(Packman s)
     {
         return s.getBoundary().intersects( this.getBoundary() );
     }

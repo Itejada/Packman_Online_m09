@@ -10,7 +10,7 @@ import javafx.util.Duration;
 import java.io.File;
 import java.util.ArrayList;
 
-public class Sprite2 {
+public class Packman {
     private Image image;
     private double positionX;
     private double positionY;
@@ -28,7 +28,7 @@ public class Sprite2 {
 
     public boolean isPlaying = false;
 
-    public Sprite2(Image image,double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double width, double height) {
+    public Packman(Image image, double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double width, double height) {
         this.image=image;
         this.positionX=positionX;
         this.positionY=positionY;
@@ -66,7 +66,7 @@ public class Sprite2 {
         return new Rectangle2D(positionX,positionY,width,height);
     }
 
-    public boolean intersects(Sprite2 s)
+    public boolean intersects(Packman s)
     {
         return s.getBoundary().intersects( this.getBoundary() );
     }
@@ -130,12 +130,12 @@ public class Sprite2 {
         return Math.sqrt(Math.pow((x - positionX),2) + Math.pow((y - positionY),2) );
     }
 
-    public void movePackman(ArrayList<String> input, Sprite2 sprite2, int anchoSprite, Image up, int altoSprite, Image down,long mcurrentNanoTime) {
+    public void movePackman(ArrayList<String> input, Packman packman, int anchoSprite, Image up, int altoSprite, Image down, long mcurrentNanoTime) {
 
         if ((input.contains("LEFT") ||input.contains("A")) !=(input.contains("RIGHT") ||input.contains("D"))){
             if ((input.contains("LEFT") ||input.contains("A"))) {
                 if (positionX > 0) {
-                    animation(sprite2, "LEFT",mcurrentNanoTime);
+                    animation(packman, "LEFT",mcurrentNanoTime);
                     positionX -= velocityX;
                     isPlaying=true;
                 } else {
@@ -145,7 +145,7 @@ public class Sprite2 {
             }
             else if ((input.contains("RIGHT") ||input.contains("D"))) {
                 if (positionX < ANCHO - anchoSprite) {
-                    animation(sprite2, "RIGHT",mcurrentNanoTime);
+                    animation(packman, "RIGHT",mcurrentNanoTime);
                     positionX += velocityX;
                     isPlaying=true;
                 } else {
@@ -162,7 +162,7 @@ public class Sprite2 {
         if ((input.contains("UP") ||input.contains("W")) != (input.contains("DOWN")||input.contains("S"))) {
             if ((input.contains("UP") ||input.contains("W"))) {
                 if (positionY > 0) {
-                    sprite2.setImage(up);
+                    packman.setImage(up);
                     positionY -= velocityY;
                     isPlaying=true;
                 } else {
@@ -172,7 +172,7 @@ public class Sprite2 {
             }
             else if ((input.contains("DOWN")||input.contains("S"))) {
                 if (positionY < ALTURA - altoSprite) {
-                    sprite2.setImage(down);
+                    packman.setImage(down);
                     positionY += velocityY;
                     isPlaying=true;
                 } else {
@@ -183,20 +183,20 @@ public class Sprite2 {
                 isPlaying=false;
             }
         }
-        sprite2.setPositionX(positionX);
-        sprite2.setPositionY(positionY);
+        packman.setPositionX(positionX);
+        packman.setPositionY(positionY);
     }
 
 
-    public void checkCollision(Sprite2 sprite2, Fantasma fantasma, MediaPlayer startSound) {
+    public void checkCollision(Packman packman, Fantasma fantasma, MediaPlayer startSound) {
 
-        if((sprite2.getWidth()/2)+ (fantasma.getHeight()/2) > sprite2.distancia(fantasma.getPosX(), fantasma.getPosY())){
+        if((packman.getWidth()/2)+ (fantasma.getHeight()/2) > packman.distancia(fantasma.getPosX(), fantasma.getPosY())){
             System.out.println("x_x");
 
             setPositionY(0);
             setPositionX(0);
-            fantasma.setPosX((Math.random()*200)+100);
-            fantasma.setPosY((Math.random()*200)+100);
+            fantasma.setPosX(200+(Math.random()*200));
+            fantasma.setPosY(200+(Math.random()*200));
             startSound.seek(Duration.ZERO);
             startSound.play();
 
@@ -206,14 +206,14 @@ public class Sprite2 {
 
     /* por si no entiendes algo te dejo link
      * https://stackoverflow.com/questions/30146560/how-to-change-animationtimer-speed*/
-    private void animation(  Sprite2 sprite2, String dir, long mCurrentNanoTime) {
+    private void animation(Packman packman, String dir, long mCurrentNanoTime) {
 
         //aqui el metodo a actualizar
         int time= (int) ((mCurrentNanoTime/100000000) % 6);
         if (dir.equals("LEFT")) {
-            sprite2.setImage(framesL[time]);
+            packman.setImage(framesL[time]);
         }else{
-            sprite2.setImage(framesR[time]);
+            packman.setImage(framesR[time]);
         }
     }
 

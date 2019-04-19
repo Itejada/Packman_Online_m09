@@ -1,20 +1,20 @@
 package sounds;
 
-import sprites.Sprite2;
+import sprites.Packman;
 
 public class Sounds extends Thread {
 
-    Sprite2 sprite2;
+    Packman packman;
 
-    public Sounds(Sprite2 sprite2) {
-        this.sprite2 = sprite2;
+    public Sounds(Packman packman) {
+        this.packman = packman;
     }
 
 
     @Override
     public void run() {
         for (; ; ) {
-                sprite2.playSoundPacmanEating();
+                packman.playSoundPacmanEating();
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

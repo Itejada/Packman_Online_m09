@@ -11,8 +11,9 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sounds.Sounds;
+import sprites.Bolita;
 import sprites.Fantasma;
-import sprites.Sprite2;
+import sprites.Packman;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -42,22 +43,23 @@ public class EscenaCome extends Scene {
         startSound.setVolume(0.27);
         startSound.setAutoPlay(true);
 
+
+
         Image fimage = new Image("img/fantasma0_0.png");
-        Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, velocidad, velocidad,ANCHO, ALTURA, 24,25);
-        Fantasma fantasma2 = new Fantasma(fimage, 100, 200, velocidad, velocidad, ANCHO, ALTURA, 24,25);
-        Fantasma fantasma3 = new Fantasma(fimage, 220, 33,velocidad, velocidad, ANCHO, ALTURA,24,25);
-        Fantasma fantasma4 = new Fantasma(fimage, ANCHO, 0,velocidad, velocidad, ANCHO, ALTURA,24,25);
+        Fantasma fantasma = new Fantasma(fimage, ANCHO, ALTURA, velocidad, velocidad/2,ANCHO, ALTURA, 22,22);
+        Fantasma fantasma2 = new Fantasma(fimage, 100, 200, velocidad, velocidad/2, ANCHO, ALTURA, 22,22);
+        Fantasma fantasma3 = new Fantasma(fimage, 220, 33,velocidad, velocidad/2, ANCHO, ALTURA,22,22);
+        Fantasma fantasma4 = new Fantasma(fimage, ANCHO, 0,velocidad, velocidad/2, ANCHO, ALTURA,22,22);
 
         Image image = new Image("img/pacbol_0.png");
+        Packman packman = new Packman(image,x,y,velocidad,velocidad,ALTURA,ANCHO,22,22);
+        Sounds sound= new Sounds(packman);
+        packman.setImage(image);
 
-        Sprite2 sprite2 = new Sprite2(image,x,y,velocidad,velocidad,ALTURA,ANCHO,24,24);
-        Sounds sound= new Sounds(sprite2);
 
+        int anchoSprite = (int) packman.getWidth();
+        int altoSprite = (int) packman.getHeight();
 
-        int anchoSprite = (int) sprite2.getWidth();
-        int altoSprite = (int) sprite2.getHeight();
-
-        sprite2.setImage(new Image("img/pacbol_0.png"));
         theStage.setTitle("Keyboard Example");
 
         Image front = new Image("img/pacbol_0.png");
@@ -83,13 +85,17 @@ public class EscenaCome extends Scene {
         this.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
-                    sprite2.isPlaying=false;
+                    packman.isPlaying=false;
                     input.remove(code);
-                    sprite2.setImage(front);
+                    packman.setImage(front);
                 });
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         sound.start();
+
+        Bolita bolita=new Bolita(Math.random()*ANCHO, Math.random()*ALTURA, 120, 120);
+
+        //########################## Animacion ###########################
 
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
@@ -105,12 +111,12 @@ public class EscenaCome extends Scene {
                     fantasma3.move(currentNanoTime);
                     fantasma4.move(currentNanoTime);
 
-                    sprite2.movePackman(input, sprite2, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
+                    packman.movePackman(input, packman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
 
-                    sprite2.checkCollision(sprite2, fantasma, startSound);
-                    sprite2.checkCollision(sprite2, fantasma2,startSound);
-                    sprite2.checkCollision(sprite2, fantasma3,startSound);
-                    sprite2.checkCollision(sprite2, fantasma4,startSound);
+                    packman.checkCollision(packman, fantasma, startSound);
+                    packman.checkCollision(packman, fantasma2,startSound);
+                    packman.checkCollision(packman, fantasma3,startSound);
+                    packman.checkCollision(packman, fantasma4,startSound);
                 }
                 else {
                     fantasma.animation(currentNanoTime,"");
@@ -119,12 +125,13 @@ public class EscenaCome extends Scene {
                     fantasma4.animation(currentNanoTime,"");
                 }
 
-                sprite2.render(gc);
+                packman.render(gc);
                 fantasma.render(gc);
                 fantasma2.render(gc);
                 fantasma3.render(gc);
                 fantasma4.render(gc);
-
+                bolita.eatingBol(packman, ANCHO, ALTURA);
+                bolita.render(gc);
             }
         }.start();
 

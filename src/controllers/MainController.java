@@ -43,7 +43,6 @@ public class MainController {
         mystage.setTitle("PacMan 2.0 - Configuración");
         MyStage.getStage().setScene(new Scene(root, MyStage.ANCHO, MyStage.ALTURA));
         MyStage.setStage(mystage);
-        configurationScreenController.init();
         mystage.show();
     }
 

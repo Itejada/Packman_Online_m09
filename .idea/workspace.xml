@@ -6,12 +6,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Comportamientos y hud">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="xd">
+      <change afterPath="$PROJECT_DIR$/src/sounds/GameCorner-GSC-Remix-PokeRemixStudio.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sounds/MainTheme.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/ConfigurationGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/ConfigurationGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ConfigurationScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ConfigurationScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/escenas/EscenaCome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escenas/EscenaCome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/escenas/Hud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escenas/Hud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/Fantasma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/Fantasma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/Packman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/Packman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/escenas/MainScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/escenas/MainScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sounds/Sounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sounds/PacmanEatingTheme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ConfigurationScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ConfigurationScreen.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,28 +91,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="8" />
-          <entry key="java" value="3932" />
-          <entry key="txt" value="103" />
+          <entry key="dummy" value="1" />
+          <entry key="java" value="1894" />
+          <entry key="txt" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3932" />
-          <entry key="PLAIN_TEXT" value="111" />
+          <entry key="JAVA" value="1894" />
+          <entry key="PLAIN_TEXT" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="16" />
-          <entry key="jpg" value="1" />
-          <entry key="png" value="10" />
+          <entry key="java" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Image" value="11" />
-          <entry key="JAVA" value="16" />
+          <entry key="JAVA" value="9" />
         </counts>
       </usages-collector>
     </session>
@@ -116,7 +118,7 @@
         <counts>
           <entry key="MF" value="1" />
           <entry key="fxml" value="5" />
-          <entry key="java" value="55" />
+          <entry key="java" value="71" />
           <entry key="jpg" value="1" />
           <entry key="png" value="17" />
         </counts>
@@ -124,23 +126,23 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="18" />
-          <entry key="JAVA" value="55" />
+          <entry key="JAVA" value="71" />
           <entry key="Manifest" value="1" />
           <entry key="XML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="12" />
+          <entry key="dummy" value="31" />
           <entry key="fxml" value="29" />
-          <entry key="java" value="4657" />
+          <entry key="java" value="4979" />
           <entry key="txt" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="4657" />
-          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="JAVA" value="4979" />
+          <entry key="PLAIN_TEXT" value="33" />
           <entry key="XML" value="29" />
         </counts>
       </usages-collector>
@@ -163,80 +165,63 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/escenas/EscenaCome.java">
+        <entry file="file://$PROJECT_DIR$/src/escenas/MainScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
-              <caret line="61" column="105" selection-start-line="61" selection-start-column="105" selection-end-line="61" selection-end-column="105" />
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3720#5444#0" expanded="true" />
-                <element signature="e#5443#5444#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#614#615#0" expanded="true" />
+                <element signature="e#645#646#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/escenas/Hud.java">
+        <entry file="file://$PROJECT_DIR$/src/controllers/ConfigurationScreenController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state relative-caret-position="341">
+              <caret line="47" column="56" lean-forward="true" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#223#224#0" expanded="true" />
-                <element signature="e#255#256#0" expanded="true" />
-                <element signature="e#305#306#0" expanded="true" />
-                <element signature="e#347#348#0" expanded="true" />
+                <element signature="e#1036#1037#0" expanded="true" />
+                <element signature="e#1099#1100#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sprites/Packman.java">
+        <entry file="file://$PROJECT_DIR$/src/config/ConfigurationGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="137" column="70" selection-start-line="137" selection-start-column="70" selection-end-line="137" selection-end-column="70" />
-              <folding>
-                <element signature="e#1810#1811#0" expanded="true" />
-                <element signature="e#1869#1870#0" expanded="true" />
-                <element signature="e#6086#6087#0" expanded="true" />
-                <element signature="e#6114#6115#0" expanded="true" />
-                <element signature="e#7476#7477#0" expanded="true" />
-                <element signature="e#7504#7505#0" expanded="true" />
-                <element signature="e#7543#7544#0" expanded="true" />
-                <element signature="e#7577#7578#0" expanded="true" />
-                <element signature="e#7524#7525#0" expanded="true" />
-                <element signature="e#7552#7553#0" expanded="true" />
-                <element signature="e#7591#7592#0" expanded="true" />
-                <element signature="e#7625#7626#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="442">
+              <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sprites/Fantasma.java">
+        <entry file="file://$PROJECT_DIR$/src/sounds/MainTheme.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
+            <state relative-caret-position="255">
+              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sprites/Bolita.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="29" column="15" lean-forward="true" selection-start-line="29" selection-end-line="30" />
-              <folding>
-                <element signature="e#667#668#0" expanded="true" />
-                <element signature="e#730#731#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -283,37 +268,33 @@
         <option value="$PROJECT_DIR$/src/model/Fantasma.java" />
         <option value="$PROJECT_DIR$/src/sounds/soud.java" />
         <option value="$PROJECT_DIR$/src/sounds/sound.java" />
+        <option value="$PROJECT_DIR$/src/sprites/Sprite2.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
+        <option value="$PROJECT_DIR$/src/sprites/Fantasma.java" />
         <option value="$PROJECT_DIR$/src/views/sample.fxml" />
+        <option value="$PROJECT_DIR$/src/escenas/EscenaCome.java" />
         <option value="$PROJECT_DIR$/src/escenas/ConfigurationScreen.java" />
         <option value="$PROJECT_DIR$/src/escenas/ConfigurationScreenController.java" />
         <option value="$PROJECT_DIR$/src/escenas/MyStage.java" />
-        <option value="$PROJECT_DIR$/src/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/views/ConfigurationScreen.fxml" />
-        <option value="$PROJECT_DIR$/src/sounds/Sounds.java" />
         <option value="$PROJECT_DIR$/src/Configuration.java" />
-        <option value="$PROJECT_DIR$/src/escenas/MainScreen.java" />
+        <option value="$PROJECT_DIR$/src/sounds/Sounds.java" />
+        <option value="$PROJECT_DIR$/src/sounds/MainTheme.java" />
+        <option value="$PROJECT_DIR$/src/sounds/PacmanEatingTheme.java" />
+        <option value="$PROJECT_DIR$/src/sounds/SoundManager.java" />
         <option value="$PROJECT_DIR$/src/controllers/ConfigurationScreenController.java" />
-        <option value="$PROJECT_DIR$/src/sprites/Sprite2.java" />
-        <option value="$PROJECT_DIR$/src/sprites/Bolita.java" />
-        <option value="$PROJECT_DIR$/src/escenas/EscenaCome.java" />
-        <option value="$PROJECT_DIR$/src/sprites/Fantasma.java" />
-        <option value="$PROJECT_DIR$/src/sprites/Packman.java" />
-        <option value="$PROJECT_DIR$/src/escenas/Hud.java" />
+        <option value="$PROJECT_DIR$/src/config/ConfigurationGame.java" />
+        <option value="$PROJECT_DIR$/src/escenas/MainScreen.java" />
+        <option value="$PROJECT_DIR$/src/controllers/MainController.java" />
       </list>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="width" value="977" />
-    <option name="height" value="1038" />
+    <option name="x" value="521" />
+    <option name="y" value="133" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -322,35 +303,69 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Juego_m03" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Juego_m03" type="462c0819:PsiDirectoryNode" />
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Juego_m03" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Juego_m03" type="462c0819:PsiDirectoryNode" />
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Juego_m03" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Juego_m03" type="462c0819:PsiDirectoryNode" />
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="escenas" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Juego_m03" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Juego_m03" type="462c0819:PsiDirectoryNode" />
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sounds" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sprites" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Juego_m03_m09" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Juego_m03_m09" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -367,9 +382,8 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555702718432" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555711999027" />
     <property name="dynamic.classpath" value="false" />
-    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Hospital" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
@@ -379,15 +393,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ismae\IdeaProjects\Juego_m03\src\img" />
       <recent name="C:\Users\mnu92\Desktop\M03\Juego_m03_m09\src\img" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="escenas" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mnu92\Desktop\M03\Juego_m03_m09\src\views" />
       <recent name="C:\Users\mnu92\Desktop\M03\Juego_m03_m09\src\sounds" />
+      <recent name="C:\Users\mnu92\Desktop\M03\Juego_m03_m09\src\views" />
       <recent name="C:\Users\mnu92\Desktop\M03\Juego_m03_m09\src\img\fantasma" />
     </key>
   </component>
@@ -407,7 +420,23 @@
           <option name="myId" value="UPDATED" />
           <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/escenas/EscenaCome.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_0.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_1.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_10.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_11.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_12.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_2.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_3.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_4.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_5.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_6.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_7.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_8.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_9.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_down_1.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/pacbol_up_1.png</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sounds/Sounds.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sprites/Bolita.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sprites/Fantasma.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -416,14 +445,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/config/ConfigurationGame.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/ConfigurationScreenController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/MainController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/escenas/MainScreen.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/escenas/MyStage.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/background.jpg</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/views/ConfigurationScreen.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/views/MainScreen.fxml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/escenas/Hud.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/img/bolita20.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sprites/Packman.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -431,14 +455,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Juego_m03/sample/Controller.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Juego_m03/sample/Main.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/out/production/Juego_m03/sample/sample.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/AnimatedImage.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sample/Controller.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sample/Main.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sample/sample.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sounds/Sound.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/sprites/Sprite2.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -793,35 +810,7 @@
       <option name="project" value="LOCAL" />
       <updated>1555540651097</updated>
     </task>
-    <task id="LOCAL-00021" summary="Bolita, velocidad y hitbox de fantasmas">
-      <created>1555674106414</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1555674106414</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Sprites mejorados">
-      <created>1555681387573</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1555681387573</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Comportamientos y hud">
-      <created>1555699176332</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1555699176332</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Comportamientos y hud">
-      <created>1555700821430</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1555700821430</updated>
-    </task>
-    <option name="localTasksCounter" value="25" />
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -837,10 +826,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.18053691" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2934947" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -849,42 +838,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29912025" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.398827" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
-      <window_info anchor="bottom" id="Application Servers" order="7" />
-      <window_info anchor="bottom" id="Profiler" order="8" />
-      <window_info anchor="bottom" id="Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" weight="0.3295082" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3295082" />
-      <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" weight="0.08688524" />
-      <window_info anchor="bottom" id="Terminal" order="14" weight="0.32786885" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="2" />
-      <window_info anchor="right" id="JetGradle" order="3" />
-      <window_info anchor="right" id="Ant Build" order="4" weight="0.24966443" />
-      <window_info anchor="right" id="Database" order="5" />
-      <window_info anchor="right" id="Capture Analysis" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="9" side_tool="true" weight="0.28971255" />
-      <window_info anchor="right" id="Maven Projects" order="10" weight="0.3295302" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.13892618" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Favorites" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3181818" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2704918" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -902,7 +856,42 @@
       <window_info anchor="right" id="Palette" order="2" />
       <window_info anchor="right" id="JetGradle" order="3" />
       <window_info anchor="right" id="Ant Build" order="4" weight="0.24966443" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.3295302" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" x="0" y="0" width="295" height="544" id="Documentation" order="10" side_tool="true" weight="0.28971255" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2934947" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2704918" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295082" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="bottom" id="Profiler" order="8" />
+      <window_info anchor="bottom" id="Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" weight="0.3295082" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3295082" />
+      <window_info anchor="bottom" id="Problems" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" weight="0.08688524" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.32786885" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="right" id="JetGradle" order="3" />
+      <window_info anchor="right" id="Ant Build" order="4" weight="0.24966443" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
@@ -920,10 +909,7 @@
     <MESSAGE value="The Game" />
     <MESSAGE value="Packman" />
     <MESSAGE value="xd" />
-    <MESSAGE value="Bolita, velocidad y hitbox de fantasmas" />
-    <MESSAGE value="Sprites mejorados" />
-    <MESSAGE value="Comportamientos y hud" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comportamientos y hud" />
+    <option name="LAST_COMMIT_MESSAGE" value="xd" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -946,10 +932,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/escenas/EscenaSol.java" />
     <entry file="file://$PROJECT_DIR$/src/img/earth.png" />
+    <entry file="file://$PROJECT_DIR$/src/img/pacbol_0.png" />
     <entry file="file://$PROJECT_DIR$/src/img/space.jpg" />
     <entry file="file://$PROJECT_DIR$/src/img/stickMen_10.png" />
     <entry file="file://$PROJECT_DIR$/src/img/sun.png" />
+    <entry file="file://$PROJECT_DIR$/src/img/pacbol_2.png" />
     <entry file="file://$PROJECT_DIR$/src/img/0_0.png" />
+    <entry file="file://$PROJECT_DIR$/src/sprites/Bolita.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/img/fantasma4_0.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -973,10 +968,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/img/bolita2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/img/bolita.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/img/pacbol_up_1.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sounds/Sound.java" />
+    <entry file="file://$PROJECT_DIR$/src/sprites/Fantasma.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml" />
@@ -989,17 +997,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/MainScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/Parent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="566" column="35" selection-start-line="566" selection-start-column="35" selection-end-line="566" selection-end-column="35" />
+          <folding>
+            <element signature="e#23741#23742#0" expanded="true" />
+            <element signature="e#23772#23773#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1036,22 +1048,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/ConfigurationScreen.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-528">
           <caret line="8" column="176" selection-start-line="8" selection-start-column="176" selection-end-line="8" selection-end-column="176" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/escenas/MyStage.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1066,160 +1068,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/ConfigurationGame.java">
+    <entry file="file://$PROJECT_DIR$/src/sprites/Sprite2.java" />
+    <entry file="file://$PROJECT_DIR$/src/sprites/Packman.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="46" column="56" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/escenas/EscenaCome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-629">
+          <caret line="50" column="37" lean-forward="true" selection-start-line="46" selection-start-column="7" selection-end-line="50" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sounds/SoundManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sounds/PacmanEatingTheme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="48" lean-forward="true" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sounds/MainTheme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
-            <element signature="e#156#157#0" expanded="true" />
-            <element signature="e#189#190#0" expanded="true" />
-            <element signature="e#241#242#0" expanded="true" />
-            <element signature="e#285#286#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="e#346#347#0" expanded="true" />
-            <element signature="e#389#390#0" expanded="true" />
-            <element signature="e#425#426#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
-            <element signature="e#503#504#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
-            <element signature="e#616#617#0" expanded="true" />
-            <element signature="e#647#648#0" expanded="true" />
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/escenas/MainScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="66" lean-forward="true" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ConfigurationGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/ConfigurationScreenController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+        <state relative-caret-position="341">
+          <caret line="47" column="56" lean-forward="true" selection-start-line="47" selection-start-column="56" selection-end-line="47" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sounds/Sounds.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/bolita.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/bolita2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/pacbol_2.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/pacbol_4.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/pacbol_5.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/pacbol_6.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/pacbol_7.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/pacbol_0.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/javafx-src.zip!/javafx/scene/canvas/GraphicsContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="2657" column="16" selection-start-line="2657" selection-start-column="16" selection-end-line="2657" selection-end-column="16" />
-          <folding>
-            <element signature="e#108795#108796#0" expanded="true" />
-            <element signature="e#108838#108839#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sprites/Bolita.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="15" lean-forward="true" selection-start-line="29" selection-end-line="30" />
-          <folding>
-            <element signature="e#667#668#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/img/background.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/escenas/EscenaCome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="61" column="105" selection-start-line="61" selection-start-column="105" selection-end-line="61" selection-end-column="105" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3720#5444#0" expanded="true" />
-            <element signature="e#5443#5444#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sprites/Fantasma.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sprites/Packman.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="137" column="70" selection-start-line="137" selection-start-column="70" selection-end-line="137" selection-end-column="70" />
-          <folding>
-            <element signature="e#1810#1811#0" expanded="true" />
-            <element signature="e#1869#1870#0" expanded="true" />
-            <element signature="e#6086#6087#0" expanded="true" />
-            <element signature="e#6114#6115#0" expanded="true" />
-            <element signature="e#7476#7477#0" expanded="true" />
-            <element signature="e#7504#7505#0" expanded="true" />
-            <element signature="e#7543#7544#0" expanded="true" />
-            <element signature="e#7577#7578#0" expanded="true" />
-            <element signature="e#7524#7525#0" expanded="true" />
-            <element signature="e#7552#7553#0" expanded="true" />
-            <element signature="e#7591#7592#0" expanded="true" />
-            <element signature="e#7625#7626#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/escenas/Hud.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#223#224#0" expanded="true" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
           </folding>
         </state>
       </provider>

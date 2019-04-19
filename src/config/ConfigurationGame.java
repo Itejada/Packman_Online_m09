@@ -2,10 +2,10 @@ package config;
 
 public class ConfigurationGame {
 
-    String playerName;
-    float volume;
-    boolean volumeDisabled;
-    String skin;
+    private String playerName;
+    private float volume;
+    private boolean volumeDisabled;
+    private String skin;
 
     public String getPlayerName() {
         return playerName;

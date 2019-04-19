@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import sounds.Sounds;
+import sounds.PacmanEatingTheme;
 import sprites.Bolita;
 import sprites.Fantasma;
 import sprites.Packman;
@@ -60,7 +60,7 @@ public class EscenaCome extends Scene {
 
         Image image = new Image("img/pacbol_0.png");
         Packman packman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, 3);
-        Sounds sound= new Sounds(packman);
+        PacmanEatingTheme sound= new PacmanEatingTheme(packman);
         packman.setImage(image);
 
 

@@ -46,11 +46,10 @@ public class ConfigurationScreenController {
 
     public void setVolume(){
         float volume2 = (float) volume.getValue() / 100;
-        System.out.println(volume2);
     }
 
     public void disableVolume() {
-
+        volume.setValue(0);
     }
 
 

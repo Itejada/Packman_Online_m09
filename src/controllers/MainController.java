@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sounds.MainTheme;
 
 import java.io.IOException;
 
@@ -20,7 +21,11 @@ public class MainController {
     Button botonEmpezarPartida,botonOpciones,botonSalir;
 
     private Stage mystage;
+    private static MainTheme mainTheme = new MainTheme();
 
+    public static void run() {
+        mainTheme.run();
+    }
 
     public void empezarPartida() {
         Group root = new Group();

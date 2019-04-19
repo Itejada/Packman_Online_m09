@@ -1,6 +1,7 @@
 package sounds;
 
 import config.ConfigurationGame;
+import escenas.EscenaCome;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -8,9 +9,10 @@ import java.io.File;
 
 public class MainTheme extends Thread {
 
-    String pathMainTheme = "src/sounds/GameCorner-GSC-Remix-PokeRemixStudio.wav";
-    Media media = new Media(new File(pathMainTheme).toURI().toString());
-    MediaPlayer mainTheme = new MediaPlayer(media);
+    private String pathMainTheme = "src/sounds/GameCorner-GSC-Remix-PokeRemixStudio.wav";
+    private Media media = new Media(new File(pathMainTheme).toURI().toString());
+    private MediaPlayer mainTheme = new MediaPlayer(media);
+    public boolean state = true;
 
     @Override
     public void run() {
@@ -18,7 +20,12 @@ public class MainTheme extends Thread {
             mainTheme.setVolume(ConfigurationGame.getVolume());
             mainTheme.setAutoPlay(true);
             mainTheme.setCycleCount(MediaPlayer.INDEFINITE);
-            mainTheme.play();
+            if(state) {
+                mainTheme.play();
+            }else {
+                mainTheme.stop();
+            }
+
         }
 
     }

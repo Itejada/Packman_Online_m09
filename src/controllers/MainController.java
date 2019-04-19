@@ -32,7 +32,7 @@ public class MainController {
         Group root = new Group();
         mystage = MyStage.getStage();
         mystage.setTitle("PacMan V2 - En Partida");
-        mystage.setScene(new EscenaCome(root));
+        mystage.setScene(new EscenaCome(root,mainTheme));
         MyStage.setStage(mystage);
         mystage.show();
     }

@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import sounds.MainTheme;
 import sounds.PacmanEatingTheme;
 import sprites.Bolita;
 import sprites.Fantasma;
@@ -28,19 +29,19 @@ public class EscenaCome extends Scene {
     private static final int HEIGHT_SCREEN = 650;
     private static final int WIDTH_SCREEN = 450;
     private Group root;
+    private MainTheme mainTheme;
 
     long mCurrentNanoTime=0;
 
-
-    public EscenaCome(Group root) {
+    public EscenaCome(Group root, MainTheme mainTheme) {
         super(root);
         this.root=root;
+        this.mainTheme=mainTheme;
+        this.mainTheme.state=false;
         this.start(MyStage.getStage());
     }
 
     Hud hud= new Hud(WIDTH_SCREEN);
-
-
 
     public void start(Stage theStage) {
 
@@ -49,7 +50,6 @@ public class EscenaCome extends Scene {
         MediaPlayer startSound = new MediaPlayer(media);
         startSound.setVolume(0.27);
         startSound.setAutoPlay(true);
-
 
 
         Image fimage = new Image("img/fantasma0_0.png");
@@ -115,7 +115,6 @@ public class EscenaCome extends Scene {
             public void handle(long currentNanoTime) {
                 mCurrentNanoTime=currentNanoTime;
 
-
                 // Clear the canvas
                 gc.clearRect(0, 0, HEIGHT_SCREEN, WIDTH_SCREEN);
                 gc.setFill(Color.BLUE);
@@ -123,13 +122,12 @@ public class EscenaCome extends Scene {
                 hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
 
 
-
-
                 if(startSound.getCurrentTime().equals(startSound.getBufferProgressTime())) {
                     fantasma.move(currentNanoTime);
                     fantasma2.move(currentNanoTime);
                     fantasma3.move(currentNanoTime);
                     fantasma4.move(currentNanoTime);
+                    mainTheme.state=true;
 
                     packman.movePackman(input, packman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
 
@@ -153,9 +151,7 @@ public class EscenaCome extends Scene {
 
 
         }.start();
-
         theStage.show();
     }
-
 
 }

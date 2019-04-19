@@ -12,6 +12,7 @@ public class Hud {
 
     private double WIDTH_HUD;
     private Image hudBg= new Image("img/background.jpg");
+    private Image heart= new Image("img/heart0.png");
 
 
 
@@ -29,6 +30,11 @@ public class Hud {
         gc.fillText( packman.getScore()+"", HEIGHT_SCREEN-50, 40 );
         gc.setFill( Color.RED );
         gc.fillText( packman.getLives()+"", 50, 40 );
+
+        for (int i = 0; i < packman.getLives() ; i++) {
+            gc.drawImage(heart, 6 + 37*i, 10,35, 30 );
+
+        }
 
 
     }

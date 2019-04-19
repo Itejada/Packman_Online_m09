@@ -8,15 +8,15 @@ public class Bolita {
     Image image = new Image("img/bolita20.png");
     double x;
     double y;
-    int pts;
+    int score;
     private double WIDTH_BOL;
     private double HEIGHT_BOL;
 
-    public Bolita(Image image, int pts, double x, double y) {
+    public Bolita(Image image, int score, double x, double y) {
         this.image = image;
         this.x = x;
         this.y = y;
-        this.pts = pts;
+        this.score = score;
     }
 
     public Bolita(double x, double y,double WIDTH_BOL, double HEIGHT_BOL) {
@@ -27,16 +27,20 @@ public class Bolita {
     }
 
     public void render(GraphicsContext gc) {
-        gc.drawImage(image, x, y, WIDTH_BOL,HEIGHT_BOL);
+        gc.drawImage(image, x, y, WIDTH_BOL, HEIGHT_BOL);
     }
 
-    public void eatingBol(Packman packman, double width, double height) {
+    public void eatingBol(Packman packman, double WIDTH_SCREEN, double HEIGHT_SCREEN) {
 
 
-        if ((packman.getWidth() / 2) + (HEIGHT_BOL /2) > packman.distancia(x, y)) {
-            System.out.println("################################################################################################################:::");
-            x=Math.random()*width  ;
-            y=Math.random()*height ;
+        if (((packman.getHEIGHT_PACMAN() / 2)) + ((HEIGHT_BOL /2)) > packman.distancia(x-6, y-6)) {
+            System.out.println("##############################################:::");
+
+    //        Aqui dererminamos el rango del Math.random, nunca sera 50 pixeles mas ancho y alto que el inicio de
+    //        la pantalla y 50 mas bajo y alto que el final de esta
+            x=(Math.random()*(WIDTH_SCREEN-(100)))+50  ;
+            y=(Math.random()*(HEIGHT_SCREEN-(100)))+50  ;
+            packman.setScore(packman.getScore()+1);
         }
 
     }

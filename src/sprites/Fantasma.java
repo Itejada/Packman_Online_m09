@@ -20,8 +20,8 @@ public class Fantasma {
         this.image=_image;
         this.posX = x;
         this.posY = y;
-        this.velX= velX/2;
-        this.velY=velY/2;
+        this.velX= (velX+ Math.random()*5)/2;
+        this.velY=(velY+ Math.random()*5)/2;
         this.width=width;
         this.height=height;
         this.dirX = 1;
@@ -95,7 +95,7 @@ public class Fantasma {
             this.animation(currentNanoTime,"DOWN");
         } else {
             posY -= velY+(Math.random()*(posY/95));
-            if (posY <= 0) dirY = (-1) * dirY;
+            if (posY <= ALTURA/9) dirY = (-1) * dirY;
             this.animation(currentNanoTime,"UP");
         }
 

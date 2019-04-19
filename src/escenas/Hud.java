@@ -27,6 +27,9 @@ public class Hud {
         gc.drawImage(hudBg, 0, 0,HEIGHT_SCREEN, WIDTH_SCREEN/9 );
         gc.setFill( Color.WHITE );
         gc.fillText( packman.getScore()+"", HEIGHT_SCREEN-50, 40 );
+        gc.setFill( Color.RED );
+        gc.fillText( packman.getLives()+"", 50, 40 );
+
 
     }
 

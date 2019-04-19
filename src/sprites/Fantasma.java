@@ -20,8 +20,8 @@ public class Fantasma {
         this.image=_image;
         this.posX = x;
         this.posY = y;
-        this.velX= (velX+ Math.random()*5)/2;
-        this.velY=(velY+ Math.random()*5)/2;
+        this.velX= (velX+ Math.random()*4)/2.5;
+        this.velY=(velY+ Math.random()*4)/2.5;
         this.width=width;
         this.height=height;
         this.dirX = 1;

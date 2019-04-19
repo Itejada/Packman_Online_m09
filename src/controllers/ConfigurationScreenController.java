@@ -1,6 +1,7 @@
 package controllers;
 
 
+import config.ConfigurationGame;
 import escenas.MyStage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,8 @@ public class ConfigurationScreenController {
     }
 
     public void setVolume(){
-        float volume2 = (float) volume.getValue() / 100;
+        double volume2 = volume.getValue() / 100;
+        ConfigurationGame.setVolume(volume2);
     }
 
     public void disableVolume() {

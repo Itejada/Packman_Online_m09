@@ -2,41 +2,41 @@ package config;
 
 public class ConfigurationGame {
 
-    private String playerName;
-    private float volume;
-    private boolean volumeDisabled;
-    private String skin;
+    private static String playerName="";
+    private static double volume=0.5;
+    private static boolean volumeDisabled = false;
+    private static String skin = null;
 
-    public String getPlayerName() {
+    public static String getPlayerName() {
         return playerName;
     }
 
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    public static void setPlayerName(String playerNameR) {
+        playerName = playerNameR;
     }
 
-    public float getVolume() {
+    public static double getVolume() {
         return volume;
     }
 
-    public void setVolume(float volume) {
-        this.volume = volume;
+    public static void setVolume(double volumeR) {
+        volume = volumeR;
     }
 
-    public boolean isVolumeDisabled() {
+    public static boolean isVolumeDisabled() {
         return volumeDisabled;
     }
 
-    public void setVolumeDisabled(boolean volumeDisabled) {
-        this.volumeDisabled = volumeDisabled;
+    public static void setVolumeDisabled(boolean volumeDisabledR) {
+        volumeDisabled = volumeDisabledR;
     }
 
-    public String getSkin() {
+    public static String getSkin() {
         return skin;
     }
 
-    public void setSkin(String skin) {
-        this.skin = skin;
+    public static void setSkin(String skinR) {
+        skin = skinR;
     }
 
 

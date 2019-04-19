@@ -1,5 +1,6 @@
 package sounds;
 
+import config.ConfigurationGame;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -13,9 +14,12 @@ public class MainTheme extends Thread {
 
     @Override
     public void run() {
-        mainTheme.setVolume(0.50);
-        mainTheme.setAutoPlay(true);
-        mainTheme.setCycleCount(MediaPlayer.INDEFINITE);
-        mainTheme.play();
+        for(;;) {
+            mainTheme.setVolume(ConfigurationGame.getVolume());
+            mainTheme.setAutoPlay(true);
+            mainTheme.setCycleCount(MediaPlayer.INDEFINITE);
+            mainTheme.play();
+        }
+
     }
 }

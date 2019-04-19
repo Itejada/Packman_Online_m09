@@ -31,6 +31,12 @@ public class ConfigurationScreenController {
     @FXML
     ChoiceBox selectSkin;
 
+
+    public void init() {
+        //volume.setValue(ConfigurationGame.getVolume());
+        System.out.println(ConfigurationGame.getVolume());
+    }
+
     public void saveChanges() {
 
     }

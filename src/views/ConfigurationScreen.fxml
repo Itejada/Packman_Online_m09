@@ -49,7 +49,7 @@
             <Button fx:id="BSaveChanges" layoutX="396.0" layoutY="394.0" mnemonicParsing="false" onAction="#saveChanges" text="Guardar cambios" />
             <Button fx:id="BBack" layoutX="540.0" layoutY="394.0" mnemonicParsing="false" onAction="#back" text="Volver atrás" />
             <TextField fx:id="playerName" layoutX="244.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" />
-            <Slider fx:id="volume" layoutX="244.0" layoutY="186.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#setVolume" onMouseDragged="#setVolume" prefHeight="14.0" prefWidth="300.0" />
+            <Slider fx:id="volume" layoutX="244.0" layoutY="186.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#setVolume" onMouseDragged="#setVolume" prefHeight="14.0" prefWidth="300.0" value="50.0" />
             <CheckBox fx:id="CBVolume" layoutX="245.0" layoutY="234.0" mnemonicParsing="false" onAction="#disableVolume" />
             <ChoiceBox fx:id="selectSkin" layoutX="234.0" layoutY="281.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="309.0" />
          </children></Pane>

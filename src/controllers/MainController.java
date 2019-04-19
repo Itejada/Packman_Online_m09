@@ -22,9 +22,10 @@ public class MainController {
 
     private Stage mystage;
     private static MainTheme mainTheme = new MainTheme();
+    private ConfigurationScreenController configurationScreenController = new ConfigurationScreenController();
 
     public static void run() {
-        mainTheme.run();
+        mainTheme.start();
     }
 
     public void empezarPartida() {
@@ -42,6 +43,7 @@ public class MainController {
         mystage.setTitle("PacMan 2.0 - Configuración");
         MyStage.getStage().setScene(new Scene(root, MyStage.ANCHO, MyStage.ALTURA));
         MyStage.setStage(mystage);
+        configurationScreenController.init();
         mystage.show();
     }
 

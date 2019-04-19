@@ -193,12 +193,12 @@ public class Packman {
         if((packman.getWidth()/2)+ (fantasma.getHeight()/2) > packman.distancia(fantasma.getPosX(), fantasma.getPosY())){
             System.out.println("x_x");
 
-            setPositionY(0);
-            setPositionX(0);
-            fantasma.setPosX(200+(Math.random()*200));
-            fantasma.setPosY(200+(Math.random()*200));
-            startSound.seek(Duration.ZERO);
-            startSound.play();
+//            setPositionY(0);
+//            setPositionX(0);
+//            fantasma.setPosX(200+(Math.random()*200));
+//            fantasma.setPosY(200+(Math.random()*200));
+//            startSound.seek(Duration.ZERO);
+//            startSound.play();
 
         }
 

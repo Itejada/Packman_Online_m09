@@ -93,7 +93,7 @@ public class EscenaCome extends Scene {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         sound.start();
 
-        Bolita bolita=new Bolita(Math.random()*ANCHO, Math.random()*ALTURA, 120, 120);
+        Bolita bolita=new Bolita(Math.random()*ANCHO, Math.random()*ALTURA, 15, 15);
 
         //########################## Animacion ###########################
 
@@ -124,14 +124,14 @@ public class EscenaCome extends Scene {
                     fantasma3.animation(currentNanoTime,"");
                     fantasma4.animation(currentNanoTime,"");
                 }
-
+                bolita.eatingBol(packman, ANCHO, ALTURA);
+                bolita.render(gc);
                 packman.render(gc);
                 fantasma.render(gc);
                 fantasma2.render(gc);
                 fantasma3.render(gc);
                 fantasma4.render(gc);
-                bolita.eatingBol(packman, ANCHO, ALTURA);
-                bolita.render(gc);
+
             }
         }.start();
 

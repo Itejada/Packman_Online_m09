@@ -122,16 +122,14 @@ public class Packman {
         Fantasma[] fantasmas = {fantasma, fantasma2, fantasma3, fantasma4};
         for (int i = 0; i < fantasmas.length; i++) {
 
-            if ((packman.getWIDTH_PACMAN() / 2) + (fantasmas[i].getHeight() / 2) > packman.distancia(fantasmas[i].getPosX(), fantasmas[i].getPosY())) {
+            if ((packman.getWIDTH_PACMAN() / 2) + ((fantasmas[i].getHeight()-12) / 2) > packman.distancia(fantasmas[i].getPosX()+4, fantasmas[i].getPosY()+3)) {
                 System.out.println("x_x");
 
-                setPositionY(ALTURA / 9);
-                setPositionX(0);
-                for (int j = 0; j < fantasmas.length ; j++) {
-                    fantasmas[j].setPosX(100 + (Math.random() * (fantasmas[j].getPosX()% ANCHO)));
-                    fantasmas[j].setPosY(100 + (Math.random() * ((fantasmas[j].getPosY()*2) % ALTURA)));
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
-
 
                 startSound.seek(Duration.ZERO);
                 startSound.play();

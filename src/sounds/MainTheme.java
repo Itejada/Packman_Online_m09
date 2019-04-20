@@ -1,9 +1,9 @@
 package sounds;
 
 import config.ConfigurationGame;
-import escenas.EscenaCome;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import java.io.File;
 
@@ -13,6 +13,7 @@ public class MainTheme extends Thread {
     private Media media = new Media(new File(pathMainTheme).toURI().toString());
     private MediaPlayer mainTheme = new MediaPlayer(media);
     public boolean state = true;
+    private Duration currentTime= Duration.ZERO;
 
     @Override
     public void run() {
@@ -21,11 +22,15 @@ public class MainTheme extends Thread {
             mainTheme.setAutoPlay(true);
             mainTheme.setCycleCount(MediaPlayer.INDEFINITE);
             if(state) {
+                if(!currentTime.equals(Duration.ZERO)) {
+                    currentTime=Duration.ZERO;
+                    mainTheme.seek(currentTime);
+                }
                 mainTheme.play();
             }else {
                 mainTheme.stop();
+                currentTime= mainTheme.getStopTime();
             }
-
         }
 
     }

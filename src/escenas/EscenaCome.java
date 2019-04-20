@@ -30,8 +30,8 @@ public class EscenaCome extends Scene {
     private static final int WIDTH_SCREEN = 450;
     private Group root;
     private MainTheme mainTheme;
-
-    long mCurrentNanoTime=0;
+    private long mCurrentNanoTime=0;
+    private Hud hud= new Hud(WIDTH_SCREEN);
 
     public EscenaCome(Group root, MainTheme mainTheme) {
         super(root);
@@ -41,8 +41,6 @@ public class EscenaCome extends Scene {
         this.start(MyStage.getStage());
     }
 
-    Hud hud= new Hud(WIDTH_SCREEN);
-
     public void start(Stage theStage) {
 
         String pathStartSound = "src/sounds/pacman_beginning.wav";
@@ -50,7 +48,6 @@ public class EscenaCome extends Scene {
         MediaPlayer startSound = new MediaPlayer(media);
         startSound.setVolume(0.27);
         startSound.setAutoPlay(true);
-
 
         Image fimage = new Image("img/fantasma0_0.png");
         Fantasma fantasma = new Fantasma(fimage, HEIGHT_SCREEN, WIDTH_SCREEN+WIDTH_SCREEN/9, velocidad, velocidad/2, HEIGHT_SCREEN, WIDTH_SCREEN, 22,22);
@@ -119,15 +116,13 @@ public class EscenaCome extends Scene {
                 gc.clearRect(0, 0, HEIGHT_SCREEN, WIDTH_SCREEN);
                 gc.setFill(Color.BLUE);
                 gc.fillRect(0, canvas.getHeight()/10, canvas.getWidth(), canvas.getHeight());
-                hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
-
 
                 if(startSound.getCurrentTime().equals(startSound.getBufferProgressTime())) {
+                    mainTheme.state=true;
                     fantasma.move(currentNanoTime);
                     fantasma2.move(currentNanoTime);
                     fantasma3.move(currentNanoTime);
                     fantasma4.move(currentNanoTime);
-                    mainTheme.state=true;
 
                     packman.movePackman(input, packman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
 
@@ -135,6 +130,7 @@ public class EscenaCome extends Scene {
 
                 }
                 else {
+                    mainTheme.state=false;
                     fantasma.animation(currentNanoTime,"");
                     fantasma2.animation(currentNanoTime,"");
                     fantasma3.animation(currentNanoTime,"");
@@ -147,6 +143,7 @@ public class EscenaCome extends Scene {
                 fantasma2.render(gc);
                 fantasma3.render(gc);
                 fantasma4.render(gc);
+                hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
                }
 
 

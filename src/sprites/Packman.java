@@ -132,6 +132,7 @@ public class Packman {
                     fantasmas[j].setPosY(100 + (Math.random() * ((fantasmas[j].getPosY()*2) % ALTURA)));
                 }
 
+
                 startSound.seek(Duration.ZERO);
                 startSound.play();
                 packman.setScore(0);

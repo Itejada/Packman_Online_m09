@@ -3,6 +3,7 @@ package controllers;
 
 import config.ConfigurationGame;
 import escenas.MyStage;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,13 +32,16 @@ public class ConfigurationScreenController {
     @FXML
     ChoiceBox selectSkin;
 
-
     public void initialize() {
+        playerName.setText(ConfigurationGame.getPlayerName());
         volume.setValue(ConfigurationGame.getVolume()*100);
-        System.out.println(ConfigurationGame.getVolume());
+        CBVolume.setSelected(ConfigurationGame.isVolumeDisabled());
+        selectSkin.setItems(FXCollections.observableArrayList("Default Skin","Blue Skin"));
+        selectSkin.setValue("Default Skin");
     }
 
     public void back() throws IOException {
+        saveChanges();
         mystage = MyStage.getStage();
         Parent root = FXMLLoader.load(getClass().getResource("../views/MainScreen.fxml"));
         mystage.setTitle("PacMan 2.0");
@@ -56,9 +60,20 @@ public class ConfigurationScreenController {
     }
 
     public void disableVolume() {
-        volume.setValue(0);
-        ConfigurationGame.setVolume(0);
+        if(!CBVolume.isSelected()) {
+            volume.setValue(50);
+            ConfigurationGame.setVolume(0.5);
+        }
+        else {
+            volume.setValue(0);
+            ConfigurationGame.setVolume(0);
+        }
     }
 
+    public void saveChanges() {
+        ConfigurationGame.setVolumeDisabled(CBVolume.isSelected());
+        ConfigurationGame.setPlayerName(playerName.getText());
+        ConfigurationGame.setSkin(selectSkin.getValue().toString());
+    }
 
 }

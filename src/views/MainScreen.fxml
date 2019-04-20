@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 
 <GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <columnConstraints>
@@ -21,10 +21,10 @@
                   <Image url="@../img/background.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="botonEmpezarPartida" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#empezarPartida" prefHeight="25.0" prefWidth="249.0" text="EMPEZAR PARTIDA" textOverrun="CLIP" />
-            <Button fx:id="botonOpciones" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#configurarOpciones" prefHeight="25.0" prefWidth="249.0" text="OPCIONES" textOverrun="CLIP" />
-            <Button fx:id="botonSalir" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salirJuego" prefHeight="25.0" prefWidth="249.0" text="SALIR" textOverrun="CLIP" />
-            <Text layoutX="200.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PACMAN 2.0" textAlignment="CENTER" wrappingWidth="242.13671875">
+            <Button fx:id="botonEmpezarPartida" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#empezarPartida" prefHeight="32.0" prefWidth="249.0" text="EMPEZAR PARTIDA" textOverrun="CLIP" />
+            <Button fx:id="botonOpciones" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#configurarOpciones" prefHeight="32.0" prefWidth="249.0" text="OPCIONES" textOverrun="CLIP" />
+            <Button fx:id="botonSalir" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salirJuego" prefHeight="32.0" prefWidth="249.0" text="SALIR" textOverrun="CLIP" />
+            <Text fill="WHITE" layoutX="200.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PACMAN 2.0" textAlignment="CENTER" wrappingWidth="242.13671875">
                <font>
                   <Font name="Yu Gothic UI Regular" size="36.0" />
                </font>

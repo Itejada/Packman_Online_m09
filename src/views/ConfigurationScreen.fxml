@@ -21,7 +21,7 @@
                   <Image url="@../img/background.jpg" />
                </image>
             </ImageView>
-            <Text layoutX="170.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURACIÓN" textAlignment="CENTER" wrappingWidth="309.13671875">
+            <Text fill="WHITE" layoutX="170.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURACIÓN" textAlignment="CENTER" wrappingWidth="309.13671875">
                <font>
                   <Font name="Yu Gothic UI Regular" size="36.0" />
                </font>

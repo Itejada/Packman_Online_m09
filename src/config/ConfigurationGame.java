@@ -2,10 +2,10 @@ package config;
 
 public class ConfigurationGame {
 
-    private static String playerName="";
+    private static String playerName="Player";
     private static double volume=0.5;
     private static boolean volumeDisabled = false;
-    private static String skin = null;
+    private static String skin = "Default Skin";
 
     public static String getPlayerName() {
         return playerName;
@@ -23,9 +23,7 @@ public class ConfigurationGame {
         volume = volumeR;
     }
 
-    public static boolean isVolumeDisabled() {
-        return volumeDisabled;
-    }
+    public static boolean isVolumeDisabled() { return volumeDisabled; }
 
     public static void setVolumeDisabled(boolean volumeDisabledR) {
         volumeDisabled = volumeDisabledR;

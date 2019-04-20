@@ -20,10 +20,8 @@ public class Fantasma {
         this.image=_image;
         this.posX = x;
         this.posY = y;
-//        this.velX= (velX+ Math.random()*4)/2.5;
-//        this.velY=(velY+ Math.random()*4)/2.5;
-        this.velX=0;
-        this.velY=0;
+        this.velX= (velX+ Math.random()*4)/2.5;
+        this.velY=(velY+ Math.random()*4)/2.5;
         this.width=width;
         this.height=height;
         this.dirX = 1;
@@ -82,24 +80,24 @@ public class Fantasma {
 
     public void move(long currentNanoTime) {
 
-//        if (dirX == 1) {
-//            posX += velX+(Math.random()*(posX/95));
-//            if (posX >= ANCHO - width) dirX = (-1) * dirX;
-//            this.animation(currentNanoTime,"RIGHT");
-//        } else {
-//            posX -= velX+(Math.random()*(posX/95));
-//            if (posX <= 0) dirX = (-1) * dirX;
-//            this.animation(currentNanoTime,"LEFT");
-//        }
-//        if (dirY == 1) {
-//            posY += velY+(Math.random()*(posY/95));
-//            if (posY >= ALTURA - height) dirY = (-1) * dirY;
-//            this.animation(currentNanoTime,"DOWN");
-//        } else {
-//            posY -= velY+(Math.random()*(posY/95));
-//            if (posY <= ALTURA/9) dirY = (-1) * dirY;
-//            this.animation(currentNanoTime,"UP");
-//        }
+        if (dirX == 1) {
+            posX += velX+(Math.random()*(posX/95));
+            if (posX >= ANCHO - width) dirX = (-1) * dirX;
+            this.animation(currentNanoTime,"RIGHT");
+        } else {
+            posX -= velX+(Math.random()*(posX/95));
+            if (posX <= 0) dirX = (-1) * dirX;
+            this.animation(currentNanoTime,"LEFT");
+        }
+        if (dirY == 1) {
+            posY += velY+(Math.random()*(posY/95));
+            if (posY >= ALTURA - height) dirY = (-1) * dirY;
+            this.animation(currentNanoTime,"DOWN");
+        } else {
+            posY -= velY+(Math.random()*(posY/95));
+            if (posY <= ALTURA/9) dirY = (-1) * dirY;
+            this.animation(currentNanoTime,"UP");
+        }
 
     }
 

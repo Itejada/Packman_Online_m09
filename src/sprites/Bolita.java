@@ -34,8 +34,6 @@ public class Bolita {
 
 
         if (((packman.getHEIGHT_PACMAN() / 2)) + ((HEIGHT_BOL /2)) > packman.distancia(x-6, y-6)) {
-            System.out.println("##############################################:::");
-
     //        Aqui dererminamos el rango del Math.random, nunca sera 50 pixeles mas ancho y alto que el inicio de
     //        la pantalla y 50 mas bajo y alto que el final de esta
             x=(Math.random()*(WIDTH_SCREEN-(100)))+50  ;

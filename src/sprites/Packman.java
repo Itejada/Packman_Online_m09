@@ -1,5 +1,6 @@
 package sprites;
 
+import config.ConfigurationGame;
 import escenas.EscenaCome;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
@@ -7,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -22,9 +24,16 @@ public class Packman {
     Image[] framesR = new Image[6];
     Image[] framesL = new Image[6];
 
+
+    private boolean alive = true;
+
     private String pathMoveSound = "src/sounds/PacmanWakaWaka04.wav";
     private Media media = new Media(new File(pathMoveSound).toURI().toString());
     private MediaPlayer moveSound = new MediaPlayer(media);
+
+    private String pathDeadSound = "src/sounds/pacman_death.wav";
+    private Media media2 = new Media(new File(pathDeadSound).toURI().toString());
+    private MediaPlayer deadSound = new MediaPlayer(media2);
 
     public boolean isPlaying = false;
 
@@ -45,7 +54,6 @@ public class Packman {
             framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
         }
         moveSound.setCycleCount(MediaPlayer.INDEFINITE);
-        moveSound.setVolume(0.25);
     }
 
     // ...
@@ -60,7 +68,6 @@ public class Packman {
     public void render(GraphicsContext gc) {
         gc.drawImage(image, positionX, positionY, WIDTH_PACMAN, HEIGHT_PACMAN);
     }
-
 
     public void movePackman(ArrayList<String> input, Packman packman, int anchoSprite, Image up, int altoSprite, Image down, long mcurrentNanoTime) {
 
@@ -86,6 +93,8 @@ public class Packman {
             } else {
                 isPlaying = false;
             }
+        }else {
+            isPlaying=false;
         }
 
         //en este if compruebo si el arriba/abajo, no estan pulsados a la vez
@@ -116,42 +125,55 @@ public class Packman {
         packman.setPositionY(positionY);
     }
 
-
-    public void checkCollision(Packman packman, Fantasma fantasma, Fantasma fantasma2, Fantasma fantasma3, Fantasma fantasma4, MediaPlayer startSound) {
+    public void checkCollision(Packman packman, Fantasma fantasma, Fantasma fantasma2, Fantasma fantasma3, Fantasma fantasma4, MediaPlayer startSound) throws InterruptedException {
 
         Fantasma[] fantasmas = {fantasma, fantasma2, fantasma3, fantasma4};
         for (int i = 0; i < fantasmas.length; i++) {
-
+            alive=true;
             if ((packman.getWIDTH_PACMAN() / 2) + ((fantasmas[i].getHeight()-12) / 2) > packman.distancia(fantasmas[i].getPosX()+4, fantasmas[i].getPosY()+3)) {
-                System.out.println("x_x");
-
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                alive=false;
+                if(!ConfigurationGame.isVolumeDisabled()) {
+                    deadSound.setVolume(ConfigurationGame.getVolume()/2);
+                }else {
+                    deadSound.setVolume(0);
                 }
 
-                setPositionY(ALTURA / 9);
-                setPositionX(0);
-                for (int j = 0; j < fantasmas.length ; j++) {
-                    fantasmas[j].setPosX(100 + (Math.random() * (fantasmas[j].getPosX()% ANCHO)));
-                    fantasmas[j].setPosY(100 + (Math.random() * ((fantasmas[j].getPosY()*2) % ALTURA)));
-                }
+                deadSound.seek(Duration.ZERO);
+                deadSound.play();
 
-                startSound.seek(Duration.ZERO);
-                startSound.play();
-                packman.setScore(0);
-                packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
+                //Si nos matan en la vida 0, iremos a GameOver.
+                if(packman.getLives()>=0) {
+                    setPositionY(ALTURA / 9);
+                    setPositionX(0);
+                    for (int j = 0; j < fantasmas.length ; j++) {
+                        fantasmas[j].setPosX(100 + (Math.random() * (fantasmas[j].getPosX()% ANCHO)));
+                        fantasmas[j].setPosY(100 + (Math.random() * ((fantasmas[j].getPosY()*2) % ALTURA)));
+                    }
+                    packman.setScore(0);
+                    packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
+                    Thread.sleep(1000);
+                    if(packman.getLives()<0) {
+                        moveSound.seek(moveSound.getMedia().getDuration());
+                        moveSound.stop();
+                        deadSound.seek(deadSound.getMedia().getDuration());
+                        deadSound.stop();
+                        packman.setPositionX(0);
+                        packman.setPositionY(0);
+                        EscenaCome.gameOver();
+                    }else {
+                        startSound.seek(Duration.ZERO);
+                        startSound.play();
+                    }
+                }else {
+                    Thread.sleep(1000);
+                }
             }
-
         }
-
     }
 
     /* por si no entiendes algo te dejo link
      * https://stackoverflow.com/questions/30146560/how-to-change-animationtimer-speed*/
     private void animation(Packman packman, String dir, long mCurrentNanoTime) {
-
         //aqui el metodo a actualizar
         int time = (int) ((mCurrentNanoTime / 100000000) % 6);
         if (dir.equals("LEFT")) {
@@ -162,12 +184,28 @@ public class Packman {
     }
 
     public void playSoundPacmanEating() {
-        if (isPlaying) {
-            moveSound.play();
-        } else {
+        if(alive){
+            if(!ConfigurationGame.isSoundsDisabled()) {
+                if(!ConfigurationGame.isVolumeDisabled()) {
+                    moveSound.setVolume(ConfigurationGame.getVolume()/2);
+                }else {
+                    moveSound.setVolume(0.25);
+                }
+            }else {
+                moveSound.setVolume(0);
+            }
+
+            if (isPlaying) {
+                moveSound.play();
+            } else {
+                moveSound.stop();
+                isPlaying = false;
+            }
+        }else {
             moveSound.stop();
-            isPlaying = false;
+            isPlaying=false;
         }
+
     }
     public Rectangle2D getBoundary() {
         return new Rectangle2D(positionX, positionY, WIDTH_PACMAN, HEIGHT_PACMAN);

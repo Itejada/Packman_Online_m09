@@ -27,7 +27,7 @@ public class ConfigurationScreenController {
     Slider volume;
 
     @FXML
-    CheckBox CBVolume;
+    CheckBox CBVolume,CBSounds;
 
     @FXML
     ChoiceBox selectSkin;
@@ -36,6 +36,7 @@ public class ConfigurationScreenController {
         playerName.setText(ConfigurationGame.getPlayerName());
         volume.setValue(ConfigurationGame.getVolume()*100);
         CBVolume.setSelected(ConfigurationGame.isVolumeDisabled());
+        CBSounds.setSelected(ConfigurationGame.isSoundsDisabled());
         selectSkin.setItems(FXCollections.observableArrayList("Default Skin","Blue Skin"));
         selectSkin.setValue("Default Skin");
     }
@@ -72,6 +73,7 @@ public class ConfigurationScreenController {
 
     public void saveChanges() {
         ConfigurationGame.setVolumeDisabled(CBVolume.isSelected());
+        ConfigurationGame.setSoundsDisabled(CBSounds.isSelected());
         ConfigurationGame.setPlayerName(playerName.getText());
         ConfigurationGame.setSkin(selectSkin.getValue().toString());
     }

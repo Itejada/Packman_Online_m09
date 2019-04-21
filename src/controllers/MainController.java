@@ -22,7 +22,7 @@ public class MainController {
 
     private Stage mystage;
     private static MainTheme mainTheme = new MainTheme();
-    private ConfigurationScreenController configurationScreenController = new ConfigurationScreenController();
+
 
     public static void run() {
         mainTheme.start();

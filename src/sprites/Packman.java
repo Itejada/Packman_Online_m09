@@ -153,9 +153,7 @@ public class Packman {
                     packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
                     Thread.sleep(1000);
                     if(packman.getLives()<0) {
-                        moveSound.seek(moveSound.getMedia().getDuration());
                         moveSound.stop();
-                        deadSound.seek(deadSound.getMedia().getDuration());
                         deadSound.stop();
                         packman.setPositionX(0);
                         packman.setPositionY(0);

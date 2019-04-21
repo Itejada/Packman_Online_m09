@@ -32,9 +32,9 @@ public class EscenaCome extends Scene {
 
 
 
-    //TODO: Crear pantalla de game Over (dibujándolo en el medio)
-    //TODO: Mostrar tu mejor partida, y en la siguiente pantalla el top10.
+    //TODO: Mostrar los datos de la partida jugada, y en la siguiente pantalla el top10.
     //TODO: Crear fichero con mejores partidas. (top 10)
+    //TODO: Refactorizar código.
 
     private double x = 0;
     private double y = WIDTH_SCREEN/9;

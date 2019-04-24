@@ -56,7 +56,7 @@ public class MatchResumeScreenController {
     public void toTop10() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(EscenaCome.class.getResource("../views/MainScreen.fxml"));
+            root = FXMLLoader.load(EscenaCome.class.getResource("../views/Top10Screen.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }

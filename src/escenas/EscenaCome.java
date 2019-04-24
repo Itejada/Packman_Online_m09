@@ -40,7 +40,7 @@ public class EscenaCome extends Scene {
     double velocidad = 5;
     public static final int HEIGHT_SCREEN = 650;
     public static final int WIDTH_SCREEN = 450;
-    public static final int VIDAS = 3;
+    public static final int VIDAS = 1;
     private Group root;
     private MainTheme mainTheme;
     private long mCurrentNanoTime=0;

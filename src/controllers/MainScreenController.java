@@ -2,6 +2,7 @@ package controllers;
 
 import escenas.EscenaCome;
 import escenas.MyStage;
+import escenas.Partida;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -33,6 +34,16 @@ public class MainScreenController {
         mystage = MyStage.getStage();
         mystage.setTitle("PacMan V2");
         mystage.setScene(new EscenaCome(root,mainTheme));
+        MyStage.setStage(mystage);
+        mystage.show();
+    }
+
+    public void verTop10() throws IOException {
+        Partida partida = new Partida();
+        Parent root = FXMLLoader.load(getClass().getResource("../views/Top10Screen.fxml"));
+        mystage = MyStage.getStage();
+        mystage.setTitle("PacMan 2.0 - Top 10");
+        MyStage.getStage().setScene(new Scene(root, MyStage.ANCHO, MyStage.ALTURA));
         MyStage.setStage(mystage);
         mystage.show();
     }

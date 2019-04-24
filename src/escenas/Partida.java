@@ -22,6 +22,8 @@ public class Partida {
     private static boolean worstadded;
 
     public Partida() throws IOException {
+        bestadded=false;
+        worstadded=false;
         linea = br.readLine();
         int i=0;
         while((linea = br.readLine()) != null)  {
@@ -32,9 +34,14 @@ public class Partida {
         fr.close();
     }
 
+
+    public static ArrayList<String> getPartidasTop10() {
+        return top10;
+    }
+
     public static void setPartidaToTop10() throws IOException {
         ArrayList<String> newTop10 = new ArrayList<>();
-        for(int i=0;i<top10.size()-1;i++) {
+        for(int i=0;i<=9;i++) {
             String[] values = top10.get(i).split(",");
             int bolitasTopTen = Integer.valueOf(values[1]);
             double timeTopTen = Double.valueOf(values[2]);
@@ -44,11 +51,11 @@ public class Partida {
             if(bolitasTopTen < bestCatch && !bestadded) {
                 newTop10.add(newTop10.size(),ConfigurationGame.getPlayerName()+","+bestCatch+","+bestTime);
                 bestadded = true;
-                if(bolitasTopTen < worstCatch && !worstadded && i<8) {
+                if(bolitasTopTen < worstCatch && !worstadded) {
                     newTop10.add(newTop10.size(),ConfigurationGame.getPlayerName()+","+worstCatch+","+worstTime);
                     worstadded = true;
                     newTop10.add(newTop10.size(), top10.get(i));
-                }else if(bolitasTopTen == bestCatch && !worstadded && i<8) {
+                }else if(bolitasTopTen == bestCatch && !worstadded) {
                     if (timeTopTen > worstTime) {
                         newTop10.add(newTop10.size(), ConfigurationGame.getPlayerName() + "," + worstCatch + "," + worstTime);
                         worstadded = true;
@@ -79,12 +86,13 @@ public class Partida {
             }else {
                 newTop10.add(newTop10.size(),top10.get(i));
             }
+            System.out.println(newTop10.get(i));
         }
         top10 = newTop10;
         File partidasTop10Temporal = new File("src/data/partidastop10_2.csv");
         FileWriter fw = new FileWriter(partidasTop10Temporal);
         fw.write("Jugador,Bolitas capturadas,Tiempo de partida\n");
-        for(int i=0;i<top10.size()-1;i++) {
+        for(int i=0;i<=9;i++) {
             fw.write(top10.get(i)+"\n");
         }
         fw.close();

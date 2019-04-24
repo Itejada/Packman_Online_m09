@@ -32,8 +32,7 @@ public class EscenaCome extends Scene {
 
 
 
-    //TODO: Mostrar los datos de la partida jugada, y en la siguiente pantalla el top10.
-    //TODO: Crear fichero con mejores partidas. (top 10)
+    //TODO: Mostrar el top10.
     //TODO: Refactorizar código.
 
     private double x = 0;
@@ -41,10 +40,13 @@ public class EscenaCome extends Scene {
     double velocidad = 5;
     public static final int HEIGHT_SCREEN = 650;
     public static final int WIDTH_SCREEN = 450;
+    public static final int VIDAS = 1;
     private Group root;
     private MainTheme mainTheme;
     private long mCurrentNanoTime=0;
-    private long lastupdate;
+    private long lastupdate=0;
+    private long startPartida=0;
+    private long deadTime =0;
     private Hud hud= new Hud(WIDTH_SCREEN);
     private int state = -2;
     private ImageView musicIcon = new ImageView("img/musicon.png");
@@ -54,7 +56,7 @@ public class EscenaCome extends Scene {
     private Image soundOn = new Image("img/soundon.png");
     private Image soundOf = new Image("img/soundoff.png");
 
-    public EscenaCome(Group root, MainTheme mainTheme) {
+    public EscenaCome(Group root, MainTheme mainTheme) throws IOException {
         super(root);
         this.root=root;
         this.mainTheme=mainTheme;
@@ -72,9 +74,9 @@ public class EscenaCome extends Scene {
         }
     }
 
+    public void start(Stage theStage) throws IOException {
 
-
-    public void start(Stage theStage) {
+        Partida partida = new Partida();
 
         String pathStartSound = "src/sounds/pacman_beginning.wav";
         Media media = new Media(new File(pathStartSound).toURI().toString());
@@ -89,14 +91,14 @@ public class EscenaCome extends Scene {
         Fantasma fantasma4 = new Fantasma(fimage, HEIGHT_SCREEN, 0,velocidad, velocidad/2, HEIGHT_SCREEN, WIDTH_SCREEN,22,22);
 
         Image image = new Image("img/pacbol_0.png");
-        Packman packman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, 1);
+        Packman packman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS);
         PacmanEatingTheme sound= new PacmanEatingTheme(packman);
         packman.setImage(image);
 
         int anchoSprite = (int) packman.getWIDTH_PACMAN();
         int altoSprite = (int) packman.getHEIGHT_PACMAN();
 
-        theStage.setTitle("Keyboard Example");
+        theStage.setTitle("Pacman V2");
 
         Image front = new Image("img/pacbol_0.png");
         Image up = new Image("img/pacbol_up_1.png");
@@ -178,6 +180,7 @@ public class EscenaCome extends Scene {
                     startSound.setVolume(0);
                 }
                 mCurrentNanoTime=currentNanoTime;
+                deadTime =mCurrentNanoTime-startPartida;
 
                 // Clear the canvas
                 gc.clearRect(0, 0, HEIGHT_SCREEN, WIDTH_SCREEN);
@@ -201,8 +204,10 @@ public class EscenaCome extends Scene {
 
                         packman.movePackman(input, packman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
                         try {
-                            packman.checkCollision(packman, fantasma,fantasma2,fantasma3,fantasma4, startSound);
+                            packman.checkCollision(packman, fantasma,fantasma2,fantasma3,fantasma4, startSound, deadTime,partida);
                         } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
@@ -223,11 +228,11 @@ public class EscenaCome extends Scene {
                     fantasma4.render(gc);
                     hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
 
-                    //if(state==0) state=-1;
                     if(state ==-2) {
                         gc.setFill( Color.WHITE );
                         gc.fillText( "¿¡PREPARADO!?", HEIGHT_SCREEN/4, WIDTH_SCREEN/2);
                         lastupdate=mCurrentNanoTime;
+                        startPartida=mCurrentNanoTime;
                     }
 
                     if(state ==-1) {
@@ -240,14 +245,14 @@ public class EscenaCome extends Scene {
         theStage.show();
     }
 
-    public static void gameOver() {
+    public static void toMatchResumeScreen() {
             Parent root = null;
             try {
-                root = FXMLLoader.load(EscenaCome.class.getResource("../views/MainScreen.fxml"));
+                root = FXMLLoader.load(EscenaCome.class.getResource("../views/MatchResumeScreen.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            MyStage.getStage().setTitle("PacMan 2.0");
+            MyStage.getStage().setTitle("PacMan 2.0 - Resumen de partida");
             MyStage.getStage().setResizable(false);
             MyStage.getStage().setScene(new Scene(root, MyStage.ANCHO, MyStage.ALTURA));
             MyStage.setStage(MyStage.getStage());

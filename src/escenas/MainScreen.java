@@ -1,6 +1,6 @@
 package escenas;
 
-import controllers.MainController;
+import controllers.MainScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +16,7 @@ public class MainScreen extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(new Scene(root, MyStage.ANCHO, MyStage.ALTURA));
         MyStage.setStage(primaryStage);
-        MainController.run();
+        MainScreenController.run();
         primaryStage.show();
     }
 }

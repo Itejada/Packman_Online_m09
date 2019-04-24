@@ -32,8 +32,8 @@
                </font>
             </Text>
             <Button fx:id="BMainMenu" layoutX="373.0" layoutY="392.0" mnemonicParsing="false" onAction="#toMainMenu" text="Menú principal" />
-            <TextArea fx:id="bestMatch" disable="true" editable="false" layoutX="50.0" layoutY="157.0" prefHeight="75.0" prefWidth="291.0" />
-            <TextArea fx:id="worstMatch" disable="true" editable="false" layoutX="50.0" layoutY="284.0" prefHeight="75.0" prefWidth="291.0" />
+            <TextArea fx:id="bestMatch" layoutX="50.0" layoutY="157.0" prefHeight="75.0" prefWidth="291.0" />
+            <TextArea fx:id="worstMatch" layoutX="50.0" layoutY="284.0" prefHeight="75.0" prefWidth="291.0" />
             <Text layoutX="50.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Peor partida" wrappingWidth="195.205078125">
                <font>
                   <Font size="18.0" />

@@ -14,7 +14,7 @@ import sounds.MainTheme;
 import java.io.IOException;
 
 
-public class MainController {
+public class MainScreenController {
 
 
     @FXML
@@ -28,10 +28,10 @@ public class MainController {
         mainTheme.start();
     }
 
-    public void empezarPartida() {
+    public void empezarPartida() throws IOException {
         Group root = new Group();
         mystage = MyStage.getStage();
-        mystage.setTitle("PacMan V2 - En Partida");
+        mystage.setTitle("PacMan V2");
         mystage.setScene(new EscenaCome(root,mainTheme));
         MyStage.setStage(mystage);
         mystage.show();

@@ -2,6 +2,7 @@ package sprites;
 
 import config.ConfigurationGame;
 import escenas.EscenaCome;
+import escenas.Partida;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -11,6 +12,7 @@ import javafx.util.Duration;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Packman {
@@ -56,14 +58,6 @@ public class Packman {
         moveSound.setCycleCount(MediaPlayer.INDEFINITE);
     }
 
-    // ...
-    // methods omitted for brevity
-    // ...
-
-    public void update(double time) {
-        positionX += velocityX * time;
-        positionY += velocityY * time;
-    }
 
     public void render(GraphicsContext gc) {
         gc.drawImage(image, positionX, positionY, WIDTH_PACMAN, HEIGHT_PACMAN);
@@ -125,7 +119,7 @@ public class Packman {
         packman.setPositionY(positionY);
     }
 
-    public void checkCollision(Packman packman, Fantasma fantasma, Fantasma fantasma2, Fantasma fantasma3, Fantasma fantasma4, MediaPlayer startSound) throws InterruptedException {
+    public void checkCollision(Packman packman, Fantasma fantasma, Fantasma fantasma2, Fantasma fantasma3, Fantasma fantasma4, MediaPlayer startSound, long deadTime, Partida partida) throws InterruptedException, IOException {
 
         Fantasma[] fantasmas = {fantasma, fantasma2, fantasma3, fantasma4};
         for (int i = 0; i < fantasmas.length; i++) {
@@ -141,29 +135,60 @@ public class Packman {
                 deadSound.seek(Duration.ZERO);
                 deadSound.play();
 
-                //Si nos matan en la vida 0, iremos a GameOver.
-                if(packman.getLives()>=0) {
-                    setPositionY(ALTURA / 9);
-                    setPositionX(0);
-                    for (int j = 0; j < fantasmas.length ; j++) {
-                        fantasmas[j].setPosX(100 + (Math.random() * (fantasmas[j].getPosX()% ANCHO)));
-                        fantasmas[j].setPosY(100 + (Math.random() * ((fantasmas[j].getPosY()*2) % ALTURA)));
+                setPositionY(ALTURA / 9);
+                setPositionX(0);
+                for (int j = 0; j < fantasmas.length ; j++) {
+                    fantasmas[j].setPosX(100 + (Math.random() * (fantasmas[j].getPosX()% ANCHO)));
+                    fantasmas[j].setPosY(100 + (Math.random() * ((fantasmas[j].getPosY()*2) % ALTURA)));
+                }
+                packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
+                partida.setBolitasCapturadas(getLives()+1,score);
+                partida.setTime(getLives()+1, (deadTime/Math.pow(10,9)));
+                packman.setScore(0);
+                Thread.sleep(1000);
+                if(packman.getLives()<0) {
+                    moveSound.stop();
+                    deadSound.stop();
+                    packman.setPositionX(0);
+                    packman.setPositionY(0);
+
+                    double[] timeDone = partida.getTime();
+                    int[] bolitasDone = partida.getBolitasCapturadas();
+                    double bestTime = timeDone[0];
+                    double worstTime= timeDone[0];
+                    int bestCatch = bolitasDone[0];
+                    int worstCatch = bolitasDone[0];
+                    for(int x=0;x<=EscenaCome.VIDAS;x++) {
+                        if(bolitasDone[x] > bestCatch) {
+                            bestCatch = bolitasDone[x];
+                            bestTime = timeDone[x];
+                        }else if(bolitasDone[x] == bestCatch) {
+                            if(timeDone[x] < bestTime) {
+                                bestCatch = bolitasDone[x];
+                                bestTime = timeDone[x];
+                            }
+                        }
+                        if(bolitasDone[x] < worstCatch) {
+                            worstCatch = bolitasDone[x];
+                            worstTime=timeDone[x];
+                        }
+                        else if(bolitasDone[x] == worstCatch) {
+                            if(timeDone[x] > worstTime) {
+                                worstCatch = bolitasDone[x];
+                                worstTime=timeDone[x];
+                            }
+                        }
                     }
-                    packman.setScore(0);
-                    packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
-                    Thread.sleep(1000);
-                    if(packman.getLives()<0) {
-                        moveSound.stop();
-                        deadSound.stop();
-                        packman.setPositionX(0);
-                        packman.setPositionY(0);
-                        EscenaCome.gameOver();
-                    }else {
-                        startSound.seek(Duration.ZERO);
-                        startSound.play();
-                    }
+                    partida.setBestCatch(bestCatch);
+                    partida.setBestTime(bestTime);
+                    partida.setWorstCatch(worstCatch);
+                    partida.setWorstTime(worstTime);
+                    partida.setPartidaToTop10();
+
+                    EscenaCome.toMatchResumeScreen();
                 }else {
-                    Thread.sleep(1000);
+                    startSound.seek(Duration.ZERO);
+                    startSound.play();
                 }
             }
         }

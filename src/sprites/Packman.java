@@ -308,6 +308,6 @@ public class Packman {
     }
 
     public void setLives(int lives) {
-        this.lives = lives;
+        this.lives = (lives>5) ? 5:lives;
     }
 }

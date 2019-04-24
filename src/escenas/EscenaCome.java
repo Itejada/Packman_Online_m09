@@ -40,7 +40,7 @@ public class EscenaCome extends Scene {
     double velocidad = 5;
     public static final int HEIGHT_SCREEN = 650;
     public static final int WIDTH_SCREEN = 450;
-    public static final int VIDAS = 1;
+    public static final int VIDAS = 3;
     private Group root;
     private MainTheme mainTheme;
     private long mCurrentNanoTime=0;
@@ -55,6 +55,8 @@ public class EscenaCome extends Scene {
     private Image musicOf = new Image("img/musicoff.png");
     private Image soundOn = new Image("img/soundon.png");
     private Image soundOf = new Image("img/soundoff.png");
+//    private int[] cuentaAtras={5,4,3,2,1,0};
+//    private int cuentaTemporal,cuentaTemporal2,contador;
 
     public EscenaCome(Group root, MainTheme mainTheme) throws IOException {
         super(root);
@@ -228,6 +230,7 @@ public class EscenaCome extends Scene {
                     fantasma4.render(gc);
                     hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
 
+                    //if(state==0) state=-1;
                     if(state ==-2) {
                         gc.setFill( Color.WHITE );
                         gc.fillText( "¿¡PREPARADO!?", HEIGHT_SCREEN/4, WIDTH_SCREEN/2);

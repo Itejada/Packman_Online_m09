@@ -39,6 +39,12 @@ public class Bolita {
             x=(Math.random()*(WIDTH_SCREEN-(100)))+50  ;
             y=(Math.random()*(HEIGHT_SCREEN-(100)))+50  ;
             packman.setScore(packman.getScore()+1);
+
+            //aqui controlamos las vidas bonus
+            if ((packman.getScore()%10)==0){
+                packman.setLives(packman.getLives()+1);
+                System.out.println(packman.getLives());
+            }
         }
 
     }

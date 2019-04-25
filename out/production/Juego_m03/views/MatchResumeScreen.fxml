@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MatchResumeScreenController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0">
+         <children>
+            <ImageView fx:id="skin" fitHeight="453.0" fitWidth="650.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../img/background.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="142.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESUMEN PARTIDA" textAlignment="CENTER" wrappingWidth="393.13671875">
+               <font>
+                  <Font name="Yu Gothic UI Regular" size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mejor partida" wrappingWidth="195.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="BMainMenu" layoutX="373.0" layoutY="392.0" mnemonicParsing="false" onAction="#toMainMenu" text="Menú principal" />
+            <TextArea fx:id="bestMatch" layoutX="50.0" layoutY="157.0" prefHeight="75.0" prefWidth="291.0" />
+            <TextArea fx:id="worstMatch" layoutX="50.0" layoutY="284.0" prefHeight="75.0" prefWidth="291.0" />
+            <Text layoutX="50.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Peor partida" wrappingWidth="195.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="BTop10" layoutX="513.0" layoutY="392.0" mnemonicParsing="false" onAction="#toTop10" text="Ver mejores partidas" />
+         </children></Pane>
+   </children>
+</GridPane>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ConfigurationScreenController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0">
+         <children>
+            <ImageView fx:id="skin" fitHeight="453.0" fitWidth="650.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../img/background.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="170.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONFIGURACIÓN" textAlignment="CENTER" wrappingWidth="309.13671875">
+               <font>
+                  <Font name="Yu Gothic UI Regular" size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Volumen" wrappingWidth="80.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Jugador" wrappingWidth="195.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desactivar volumen" wrappingWidth="184.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Skin" wrappingWidth="184.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="BBack" layoutX="540.0" layoutY="394.0" mnemonicParsing="false" onAction="#back" text="Volver atrás" />
+            <TextField fx:id="playerName" layoutX="244.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" />
+            <Slider fx:id="volume" layoutX="244.0" layoutY="186.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#setVolume" onMouseDragged="#setVolume" prefHeight="14.0" prefWidth="300.0" value="50.0" />
+            <CheckBox fx:id="CBVolume" layoutX="245.0" layoutY="234.0" mnemonicParsing="false" onAction="#disableVolume" />
+            <ChoiceBox fx:id="selectSkin" layoutX="240.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="309.0" />
+            <CheckBox fx:id="CBSounds" layoutX="245.0" layoutY="284.0" mnemonicParsing="false" />
+            <Text layoutX="50.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desactivar sonidos" wrappingWidth="184.205078125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children></Pane>
+   </children>
+</GridPane>

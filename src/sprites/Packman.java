@@ -145,6 +145,7 @@ public class Packman {
                 partida.setBolitasCapturadas(getLives()+1,score);
                 partida.setTime(getLives()+1, (deadTime/Math.pow(10,9)));
                 packman.setScore(0);
+
                 Thread.sleep(1000);
                 if(packman.getLives()<0) {
                     moveSound.stop();
@@ -309,5 +310,12 @@ public class Packman {
 
     public void setLives(int lives) {
         this.lives = (lives>5) ? 5:lives;
+    }
+
+    public void killP(ArrayList<String> input, Packman packman){
+        if ((input.contains("K") || input.contains("k"))) {
+            packman.setLives(packman.getLives()-1);
+        }
+
     }
 }

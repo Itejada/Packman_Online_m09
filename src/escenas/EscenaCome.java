@@ -37,7 +37,7 @@ public class EscenaCome extends Scene {
 
     private double x = 0;
     private double y = WIDTH_SCREEN/9;
-    double velocidad = 5;
+    double velocidad = 5.5;
     public static final int HEIGHT_SCREEN = 650;
     public static final int WIDTH_SCREEN = 450;
     public static final int VIDAS = 1;
@@ -205,6 +205,7 @@ public class EscenaCome extends Scene {
                         fantasma4.move(currentNanoTime);
 
                         packman.movePackman(input, packman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
+                        packman.killP(input,packman);
                         try {
                             packman.checkCollision(packman, fantasma,fantasma2,fantasma3,fantasma4, startSound, deadTime,partida);
                         } catch (InterruptedException e) {

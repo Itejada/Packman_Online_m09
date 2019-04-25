@@ -12,8 +12,8 @@ public class Partida {
     private BufferedReader br = new BufferedReader(fr);
     private String linea;
     private static ArrayList<String> top10 = new ArrayList<>();
-    private int[] bolitasCapturadas = new int[EscenaCome.VIDAS+1];
-    private double[] time = new double[EscenaCome.VIDAS+1];
+    private int[] bolitasCapturadas = new int[6];
+    private double[] time = new double[6];
     private static double bestTime;
     private static double worstTime;
     private static int bestCatch;

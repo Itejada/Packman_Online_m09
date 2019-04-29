@@ -43,6 +43,6 @@ public class ConfigurationGame {
     public static void setSkin(String skinR) {
         skin = skinR;
     }
-
+//+
 
 }

@@ -254,7 +254,7 @@ public class EscenaComeOnline extends Scene {
                 }
                 try {
                     socket.receive(packet);
-                    //processament de les dades rebudes i obtenció de la resposta
+                    ////processament de les dades rebudes i obtenció de la resposta
                     getDataToRequest(packet.getData(), packet.getLength());
                 }catch(SocketTimeoutException e) {
                     System.out.println("El servidor no respòn: " + e.getMessage());

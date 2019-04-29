@@ -390,12 +390,11 @@ public class EscenaComeOnline extends Scene {
         ByteArrayInputStream in = new ByteArrayInputStream(data);
         try {
             ObjectInputStream ois = new ObjectInputStream(in);
-            PartidaOnline partidaOnline2 = (PartidaOnline) ois.readObject();
+            partidaOnline = (PartidaOnline) ois.readObject();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
     }
 }

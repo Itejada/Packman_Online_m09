@@ -7,6 +7,8 @@ import java.util.ArrayList;
 
 public class PartidaOnline implements Serializable {
 
+    private static final long serialVersionUID = 0x1b32faab5902bfa9L;
+
     public enum EstadoPartida {
         ESPERANDO_JUGADORES, EMPEZADA, ACABADA
     }

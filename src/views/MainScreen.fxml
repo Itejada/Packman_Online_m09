@@ -22,14 +22,15 @@
                </image>
             </ImageView>
             <Button fx:id="botonEmpezarPartida" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#empezarPartida" prefHeight="32.0" prefWidth="249.0" text="EMPEZAR PARTIDA" textOverrun="CLIP" />
-            <Button fx:id="botonOpciones" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#configurarOpciones" prefHeight="32.0" prefWidth="249.0" text="CONFIGURACIÓN" textOverrun="CLIP" />
-            <Button fx:id="botonTop10" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verTop10" prefHeight="32.0" prefWidth="249.0" text="VISUALIZAR TOP 10" textOverrun="CLIP" />
+            <Button fx:id="botonOpciones" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#configurarOpciones" prefHeight="32.0" prefWidth="249.0" text="CONFIGURACIÓN" textOverrun="CLIP" />
+            <Button fx:id="botonTop10" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#verTop10" prefHeight="32.0" prefWidth="249.0" text="VISUALIZAR TOP 10" textOverrun="CLIP" />
             <Text fill="WHITE" layoutX="200.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PACMAN 2.0" textAlignment="CENTER" wrappingWidth="242.13671875">
                <font>
                   <Font name="Yu Gothic UI Regular" size="36.0" />
                </font>
             </Text>
-            <Button fx:id="botonSalir" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="330.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salirJuego" prefHeight="32.0" prefWidth="249.0" text="SALIR" textOverrun="CLIP" />
+            <Button fx:id="botonSalir" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="350.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salirJuego" prefHeight="32.0" prefWidth="249.0" text="SALIR" textOverrun="CLIP" />
+            <Button fx:id="botonModoOnline" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#modoOnline" prefHeight="32.0" prefWidth="249.0" text="MODO ONLINE" textOverrun="CLIP" />
          </children></Pane>
    </children>
 </GridPane>

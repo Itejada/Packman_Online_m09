@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import online.Jugador;
 
 
 import java.io.File;
@@ -39,7 +40,9 @@ public class Packman {
 
     public boolean isPlaying = false;
 
-    public Packman(Image image, double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double WIDTH_PACMAN, double HEIGHT_PACMAN, int lives) {
+    private int idPlayer;
+
+    public Packman(Image image, double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double WIDTH_PACMAN, double HEIGHT_PACMAN, int lives, int idPlayer) {
         this.image = image;
         this.positionX = positionX;
         this.positionY = positionY;
@@ -51,11 +54,20 @@ public class Packman {
         this.ANCHO = ANCHO;
         this.lives=lives;
         this.score = 0;
+        this.idPlayer=idPlayer;
         for (int i = 0; i < 6; i++) {
             framesR[i] = new Image("img/pacbol_" + (i + 1) + ".png");
             framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
         }
         moveSound.setCycleCount(MediaPlayer.INDEFINITE);
+    }
+
+    public Packman() {}
+
+    public static Packman defaultPackman() {
+        Packman packman = new Packman();
+        packman.setLives(0);
+        return packman;
     }
 
 
@@ -120,7 +132,6 @@ public class Packman {
     }
 
     public void checkCollision(Packman packman, Fantasma fantasma, Fantasma fantasma2, Fantasma fantasma3, Fantasma fantasma4, MediaPlayer startSound, long deadTime, Partida partida) throws InterruptedException, IOException {
-
         Fantasma[] fantasmas = {fantasma, fantasma2, fantasma3, fantasma4};
         for (int i = 0; i < fantasmas.length; i++) {
             alive=true;
@@ -185,6 +196,79 @@ public class Packman {
                     partida.setWorstCatch(worstCatch);
                     partida.setWorstTime(worstTime);
                     partida.setPartidaToTop10();
+
+                    EscenaCome.toMatchResumeScreen();
+                }else {
+                    startSound.seek(Duration.ZERO);
+                    startSound.play();
+                }
+            }
+        }
+    }
+
+    public void checkCollisionOnline(Packman packman, ArrayList<Fantasma> fantasmas, MediaPlayer startSound, long deadTime, Jugador jugador) throws InterruptedException, IOException {
+        for (int i = 0; i < fantasmas.size(); i++) {
+            alive=true;
+            if ((packman.getWIDTH_PACMAN() / 2) + ((fantasmas.get(i).getHeight()-12) / 2) > packman.distancia(fantasmas.get(i).getPosX()+4, fantasmas.get(i).getPosY()+3)) {
+                alive=false;
+                if(!ConfigurationGame.isVolumeDisabled()) {
+                    deadSound.setVolume(ConfigurationGame.getVolume()/2);
+                }else {
+                    deadSound.setVolume(0);
+                }
+
+                deadSound.seek(Duration.ZERO);
+                deadSound.play();
+
+                setPositionY(ALTURA / 9);
+                setPositionX(0);
+                for (int j = 0; j < fantasmas.size(); j++) {
+                    fantasmas.get(j).setPosX(100 + (Math.random() * (fantasmas.get(j).getPosX()% ANCHO)));
+                    fantasmas.get(j).setPosY(100 + (Math.random() * ((fantasmas.get(j).getPosY()*2) % ALTURA)));
+                }
+                packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
+                jugador.setBolitasCapturadas(getLives()+1,score);
+                jugador.setTime(getLives()+1, (deadTime/Math.pow(10,9)));
+                packman.setScore(0);
+
+                Thread.sleep(1000);
+                if(packman.getLives()<0) {
+                    moveSound.stop();
+                    deadSound.stop();
+                    packman.setPositionX(0);
+                    packman.setPositionY(0);
+
+                    double[] timeDone = jugador.getTime();
+                    int[] bolitasDone = jugador.getBolitasCapturadas();
+                    double bestTime = timeDone[0];
+                    double worstTime= timeDone[0];
+                    int bestCatch = bolitasDone[0];
+                    int worstCatch = bolitasDone[0];
+                    for(int x=0;x<=EscenaCome.VIDAS;x++) {
+                        if(bolitasDone[x] > bestCatch) {
+                            bestCatch = bolitasDone[x];
+                            bestTime = timeDone[x];
+                        }else if(bolitasDone[x] == bestCatch) {
+                            if(timeDone[x] < bestTime) {
+                                bestCatch = bolitasDone[x];
+                                bestTime = timeDone[x];
+                            }
+                        }
+                        if(bolitasDone[x] < worstCatch) {
+                            worstCatch = bolitasDone[x];
+                            worstTime=timeDone[x];
+                        }
+                        else if(bolitasDone[x] == worstCatch) {
+                            if(timeDone[x] > worstTime) {
+                                worstCatch = bolitasDone[x];
+                                worstTime=timeDone[x];
+                            }
+                        }
+                    }
+                    jugador.setBestCatch(bestCatch);
+                    jugador.setBestTime(bestTime);
+                    jugador.setWorstCatch(worstCatch);
+                    jugador.setWorstTime(worstTime);
 
                     EscenaCome.toMatchResumeScreen();
                 }else {

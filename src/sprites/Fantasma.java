@@ -4,6 +4,10 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Fantasma {
 
     private Image image;
@@ -28,6 +32,19 @@ public class Fantasma {
         this.dirY = 1;
         this.ALTURA= ALTURA;
         this.ANCHO= ANCHO;
+    }
+
+    public Fantasma() {}
+
+    public static ArrayList<Fantasma> defaultFantasma() {
+        Image fimage = new Image("img/fantasma0_0.png");
+        int HEIGHT_SCREEN = 650;
+        int WIDTH_SCREEN = 450;
+        double velocidad = 5.5;
+        Fantasma fantasma = new Fantasma(fimage, HEIGHT_SCREEN, WIDTH_SCREEN+WIDTH_SCREEN/9, velocidad, velocidad/2, HEIGHT_SCREEN, WIDTH_SCREEN, 22,22);
+        ArrayList<Fantasma> fantasmas = new ArrayList<>();
+        fantasmas.add(fantasma);
+        return fantasmas;
     }
 
     public double getPosX() {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Partida {
 
-    private static File partidasTop10 = new File("src/data/partidastop10.csv");
+    private static File partidasTop10 = new File("src/data/partidastop10Online.csv");
     private FileReader fr = new FileReader(partidasTop10);
     private BufferedReader br = new BufferedReader(fr);
     private String linea;

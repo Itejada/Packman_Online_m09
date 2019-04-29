@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import online.EscenaComeOnline;
 import sounds.MainTheme;
 
 import java.io.IOException;
@@ -34,6 +35,15 @@ public class MainScreenController {
         mystage = MyStage.getStage();
         mystage.setTitle("PacMan V2");
         mystage.setScene(new EscenaCome(root,mainTheme));
+        MyStage.setStage(mystage);
+        mystage.show();
+    }
+
+    public void modoOnline() throws IOException {
+        Group root = new Group();
+        mystage = MyStage.getStage();
+        mystage.setTitle("PacMan V2");
+        mystage.setScene(new EscenaComeOnline(root,mainTheme));
         MyStage.setStage(mystage);
         mystage.show();
     }

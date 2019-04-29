@@ -93,7 +93,7 @@ public class EscenaCome extends Scene {
         Fantasma fantasma4 = new Fantasma(fimage, HEIGHT_SCREEN, 0,velocidad, velocidad/2, HEIGHT_SCREEN, WIDTH_SCREEN,22,22);
 
         Image image = new Image("img/pacbol_0.png");
-        Packman packman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS);
+        Packman packman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,0);
         PacmanEatingTheme sound= new PacmanEatingTheme(packman);
         packman.setImage(image);
 

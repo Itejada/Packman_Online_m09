@@ -1,20 +1,18 @@
 package sprites;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
-
 import java.io.Serializable;
 
-public class Bolita  {
+public class BolitaOnline implements Serializable {
 
-    Image image = new Image("img/bolita20.png");
+    private static final long serialVersionUID = 0x1b32faab5902bfa4L;
+
     double x;
     double y;
-    int score;
     private double WIDTH_BOL;
     private double HEIGHT_BOL;
 
-    public Bolita(double x, double y,double WIDTH_BOL, double HEIGHT_BOL) {
+
+    public BolitaOnline(double x, double y, double WIDTH_BOL, double HEIGHT_BOL) {
         this.x = x;
         this.y = y;
         this.WIDTH_BOL=WIDTH_BOL;
@@ -37,11 +35,7 @@ public class Bolita  {
         this.y = y;
     }
 
-    public void render(GraphicsContext gc) {
-        gc.drawImage(image, x, y, WIDTH_BOL, HEIGHT_BOL);
-    }
-
-    public void eatingBol(Packman packman, double WIDTH_SCREEN, double HEIGHT_SCREEN) {
+    public void eatingBol(PackmanOnline packman, double WIDTH_SCREEN, double HEIGHT_SCREEN) {
         if (((packman.getHEIGHT_PACMAN() / 2)) + ((HEIGHT_BOL /2)) > packman.distancia(x-6, y-6)) {
     //        Aqui dererminamos el rango del Math.random, nunca sera 50 pixeles mas ancho y alto que el inicio de
     //        la pantalla y 50 mas bajo y alto que el final de esta

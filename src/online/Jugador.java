@@ -18,18 +18,21 @@ public class Jugador implements Serializable {
     private int worstCatch;
     private boolean bestadded;
     private boolean worstadded;
+    private boolean host;
 
 
-    public Jugador() {
+    public Jugador(boolean host) {
         name = ConfigurationGame.getPlayerName();
+        this.host=host;
     }
 
-    public static Jugador defaultJugador() {
-        Jugador jugador = new Jugador();
-        jugador.name = "default";
-        return jugador;
+    public boolean isHost() {
+        return host;
     }
 
+    public void setHost(boolean host) {
+        this.host = host;
+    }
     public static String getName() {
         return name;
     }

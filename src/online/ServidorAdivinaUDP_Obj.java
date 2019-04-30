@@ -42,7 +42,7 @@ public class ServidorAdivinaUDP_Obj {
     }
 
     public void runServer() throws IOException {
-        byte [] receivingData = new byte[2048];
+        byte [] receivingData = new byte[4096];
         byte [] sendingData;
         InetAddress clientIP;
         int clientPort;
@@ -53,15 +53,33 @@ public class ServidorAdivinaUDP_Obj {
             DatagramPacket packet = new DatagramPacket(receivingData, receivingData.length);
             socket.receive(packet);
             sendingData = processData(packet.getData(), packet.getLength());
+            ByteArrayInputStream in = new ByteArrayInputStream(sendingData);
+            try {
+                ObjectInputStream ois = new ObjectInputStream(in);
+                PartidaOnline partidaOnlineTest  = (PartidaOnline) ois.readObject();
+                if(partidaOnlineTest.isFirstConection() && !partidaOnlineTest.getPlayersInGame().get(0).isHost()) {
+                    //La resposta és el tauler amb les dades de tots els jugadors
+                    ByteArrayOutputStream os = new ByteArrayOutputStream();
+                    ObjectOutputStream oos = null;
+                    try {
+                        oos = new ObjectOutputStream(os);
+                        oos.writeObject(partidaOnline);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    sendingData = os.toByteArray();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             clientIP = packet.getAddress();
             clientPort = packet.getPort();
-            packet = new DatagramPacket(sendingData, sendingData.length,
-                    clientIP, clientPort);
+            packet = new DatagramPacket(sendingData, sendingData.length, clientIP, clientPort);
             socket.send(packet);
-            //A cada jugada també enviem les dades del tauler per multicast
-            //perquè el clients que ja hagin acabat puguin seguir el jic
-            DatagramPacket multipacket = new DatagramPacket(sendingData, sendingData.length,
-                    multicastIp,multiport);
+
+            DatagramPacket multipacket = new DatagramPacket(sendingData, sendingData.length, multicastIp,multiport);
             multisocket.send(multipacket);
         }
         socket.close();
@@ -69,13 +87,12 @@ public class ServidorAdivinaUDP_Obj {
 
     //Processar la Jugada: Nom i numero
     private byte[] processData(byte[] data, int length) {
-        System.out.println("hola");
-        PartidaOnline partidaOnlineRecibida = null;
+        //PartidaOnline partidaOnlineRecibida = null;
         ByteArrayInputStream in = new ByteArrayInputStream(data);
         try {
             ObjectInputStream ois = new ObjectInputStream(in);
-            partidaOnlineRecibida = (PartidaOnline) ois.readObject();
-            System.out.println(partidaOnlineRecibida.getFantasmas().get(0).getPosX());
+            partidaOnline = (PartidaOnline) ois.readObject();
+            partidaOnline.setFirstConection(false);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -83,22 +100,23 @@ public class ServidorAdivinaUDP_Obj {
         }
 
         //comprobamos vidas del packman
-        if(partidaOnlineRecibida.getPackmans().get(0).getLives()<0 && partidaOnlineRecibida.getPackmans().get(0).getLives()<0) {
-            partidaOnlineRecibida.setEstadoPartida(PartidaOnline.EstadoPartida.ACABADA);
+        if(partidaOnline.getPackmans().get(0).getLives()<0 && partidaOnline.getPackmans().get(0).getLives()<0) {
+            partidaOnline.setEstadoPartida(PartidaOnline.EstadoPartida.ACABADA);
         }
 
-        setPartidaOnline(partidaOnlineRecibida);
         System.out.println(partidaOnline.getEstadoPartida());
+
         //La resposta és el tauler amb les dades de tots els jugadors
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         ObjectOutputStream oos = null;
         try {
             oos = new ObjectOutputStream(os);
-            oos.writeObject(partidaOnlineRecibida);
+            oos.writeObject(partidaOnline);
         } catch (IOException e) {
             e.printStackTrace();
         }
         byte[] resposta = os.toByteArray();
+
         return resposta;
     }
 

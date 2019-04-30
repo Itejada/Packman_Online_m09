@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainScreenOnlineController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="650.0">
+         <children>
+            <ImageView fitHeight="453.0" fitWidth="650.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../img/background.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="botonCrearPartida" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#crearPartida" prefHeight="32.0" prefWidth="249.0" text="CREAR PARTIDA" textOverrun="CLIP" />
+            <Button fx:id="botonVolver" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#volver" prefHeight="32.0" prefWidth="249.0" text="VOLVER" textOverrun="CLIP" />
+            <Text fill="WHITE" layoutX="200.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modo Online" textAlignment="CENTER" wrappingWidth="242.13671875">
+               <font>
+                  <Font name="Yu Gothic UI Regular" size="36.0" />
+               </font>
+            </Text>
+            <Button fx:id="botonUnirsePartida" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#unirsePartida" prefHeight="32.0" prefWidth="249.0" text="UNIRSE A PARTIDA" textOverrun="CLIP" />
+         </children></Pane>
+   </children>
+</GridPane>

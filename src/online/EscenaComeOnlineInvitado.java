@@ -28,7 +28,7 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-public class EscenaComeOnline extends Scene {
+public class EscenaComeOnlineInvitado extends Scene {
 
     private double x = 0;
     private double y = WIDTH_SCREEN/9;
@@ -50,14 +50,12 @@ public class EscenaComeOnline extends Scene {
     private Image musicOf = new Image("img/musicoff.png");
     private Image soundOn = new Image("img/soundon.png");
     private Image soundOf = new Image("img/soundoff.png");
-    private boolean host = true;
-    private int result;
-
+    private boolean firstConection = true;
     //Detección de teclas pulsadas.
     ArrayList<String> input = new ArrayList<>();
 
     private PartidaOnline partidaOnline;
-    private final String IP_SERVER = InetAddress.getLocalHost().getHostAddress();
+    private  InetAddress IP_SERVER;
     private final int PUERTO =5556;
 
     private MulticastSocket multisocket;
@@ -68,11 +66,12 @@ public class EscenaComeOnline extends Scene {
     DatagramSocket socket = new DatagramSocket();
 
 
-    public EscenaComeOnline(Group root, MainTheme mainTheme) throws IOException {
+    public EscenaComeOnlineInvitado(Group root, MainTheme mainTheme, InetAddress ip) throws IOException {
         super(root);
         this.root=root;
         this.mainTheme=mainTheme;
         this.mainTheme.state=false;
+        this.IP_SERVER = ip;
         if(ConfigurationGame.isVolumeDisabled()) {
             musicIcon.setImage(musicOf);
         }else {
@@ -168,18 +167,22 @@ public class EscenaComeOnline extends Scene {
 
         //Packman del mundo
         Image image = new Image("img/pacbol_0.png");
-        Packman packman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,0);
-        PacmanEatingTheme sound= new PacmanEatingTheme(packman);
-        packman.setImage(image);
+        Packman myPacman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,1);
+        PacmanEatingTheme sound= new PacmanEatingTheme(myPacman);
+        myPacman.setImage(image);
         sound.start();
 
+        Packman rivalPacman = new Packman(image,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,0);
+        PacmanEatingTheme soundRival= new PacmanEatingTheme(rivalPacman);
+        rivalPacman.setImage(image);
+        soundRival.start();
+
         //Pacman Online 1.
-        PackmanOnline packmanOnline = new PackmanOnline(input,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,0);
-        int anchoSprite = (int) packman.getWIDTH_PACMAN();
-        int altoSprite = (int) packman.getHEIGHT_PACMAN();
+        PackmanOnline myPacmanOnline = new PackmanOnline(input,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,1);
+        int anchoSprite = (int) myPacman.getWIDTH_PACMAN();
+        int altoSprite = (int) myPacman.getHEIGHT_PACMAN();
 
-        //ArrayList de packmans
-
+        PackmanOnline rivalPacmanOnline = new PackmanOnline(input,x,y,velocidad,velocidad, WIDTH_SCREEN, HEIGHT_SCREEN,25,25, VIDAS,0);
 
         //Bolita del mundo.
         Bolita bolitaDefault = new Bolita((Math.random()*(HEIGHT_SCREEN-(100)))+50, (Math.random()*(WIDTH_SCREEN-(100)))+50, 15, 15);
@@ -188,11 +191,8 @@ public class EscenaComeOnline extends Scene {
         BolitaOnline bolitaOnline = new BolitaOnline((Math.random()*(HEIGHT_SCREEN-(100)))+50, (Math.random()*(WIDTH_SCREEN-(100)))+50, 15, 15);
 
         //Jugador del mundo
-        Jugador jugador = new Jugador(true);
-
-        //Partida del mundo.
-        partidaOnline = new PartidaOnline(jugador,fantasmasOnlineByDefault,packmanOnline,bolitaOnline);
-
+        Jugador jugador = new Jugador(false);
+        partidaOnline = new PartidaOnline(jugador,fantasmasOnlineByDefault,myPacmanOnline,bolitaOnline);
         //Imagenes del pacman por default.
         Image front = new Image("img/pacbol_0.png");
         Image up = new Image("img/pacbol_up_1.png");
@@ -202,6 +202,8 @@ public class EscenaComeOnline extends Scene {
         Canvas canvas = new Canvas(HEIGHT_SCREEN, WIDTH_SCREEN);
         root.getChildren().addAll(canvas,musicIcon,soundIcon);
 
+
+
         this.setOnKeyPressed(
                 e -> {
                     String code = e.getCode().toString();
@@ -209,14 +211,16 @@ public class EscenaComeOnline extends Scene {
                     // only add once... prevent duplicates
                     if (!input.contains(code))
                         input.add(code);
+                        myPacmanOnline.setInput(input);
                 });
 
         this.setOnKeyReleased(
                 e -> {
                     String code = e.getCode().toString();
-                    packman.isPlaying=false;
+                    myPacman.isPlaying=false;
                     input.remove(code);
-                    packman.setImage(front);
+                    myPacman.setImage(front);
+                    myPacmanOnline.setInput(input);
                 });
 
 
@@ -234,32 +238,28 @@ public class EscenaComeOnline extends Scene {
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
 
-                //Enviamos la partida online al servidor.
-                ByteArrayOutputStream os = new ByteArrayOutputStream();
-                ObjectOutputStream oos = null;
-                try {
-                    oos = new ObjectOutputStream(os);
-                    oos.writeObject(partidaOnline);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    //Enviamos la partida online al servidor.
+                    ByteArrayOutputStream os = new ByteArrayOutputStream();
+                    ObjectOutputStream oos = null;
+                    try {
+                        oos = new ObjectOutputStream(os);
+                        oos.writeObject(partidaOnline);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                byte[] missatge = os.toByteArray();
+                    byte[] missatge = os.toByteArray();
 
-                //creació del paquet a enviar
-                try {
-                    packet = new DatagramPacket(missatge, missatge.length, InetAddress.getByName(IP_SERVER), PUERTO);
-                } catch (UnknownHostException e) {
-                    e.printStackTrace();
-                }
-                //creació d'un sòcol temporal amb el qual realitzar l'enviament
-                //socket = new DatagramSocket();
-                //Enviament del missatge
-                try {
-                    socket.send(packet);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    //creació del paquet a enviar
+                    packet = new DatagramPacket(missatge, missatge.length, IP_SERVER, PUERTO);
+                    //creació d'un sòcol temporal amb el qual realitzar l'enviament
+                    //socket = new DatagramSocket();
+                    //Enviament del missatge
+                    try {
+                        socket.send(packet);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 //Creamos paquete para recibir información de la partida del servidor.
                 packet = new DatagramPacket(receivedData, receivedData.length);
@@ -273,14 +273,16 @@ public class EscenaComeOnline extends Scene {
                     socket.receive(packet);
                     ////processament de les dades rebudes i obtenció de la resposta
                     partidaOnline=getDataToRequest(packet.getData(), packet.getLength());
-                    System.out.println(partidaOnline.getPackmans().get(0).getPositionX());
+                    if(partidaOnline.getPlayersInGame().size()==1) {
+                        partidaOnline.addPlayer(jugador);
+                    }
+                   partidaOnline.setEstadoPartida(PartidaOnline.EstadoPartida.EMPEZADA);
+
                 }catch(SocketTimeoutException e) {
                     System.out.println("El servidor no respòn: " + e.getMessage());
-                    result=-2;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
 
                 //ArrayList de fantasmasOnline (Son los que recibimos de la partida)
                 ArrayList<FantasmaOnline> fantasmas = partidaOnline.getFantasmas();
@@ -307,7 +309,7 @@ public class EscenaComeOnline extends Scene {
                 gc.fillRect(0, canvas.getHeight()/10, canvas.getWidth(), canvas.getHeight());
 
                 //Si nuestro packman tiene >= 0 vidas,podremos seguir jugando.
-                if(packman.getLives()>=0) {
+                if(myPacman.getLives()>=0) {
                     //Si el estado de la partida, no es Esperando jugadores.
                     System.out.println(partidaOnline.getEstadoPartida());
                     if(partidaOnline.getEstadoPartida() != PartidaOnline.EstadoPartida.ESPERANDO_JUGADORES) {
@@ -340,17 +342,23 @@ public class EscenaComeOnline extends Scene {
                             }
 
                             //Movemos packman por pantalla.
-                            packman.movePackman(input, packman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
+                            myPacman.movePackman(input, myPacman, anchoSprite, up, altoSprite, down,mCurrentNanoTime);
+                            rivalPacman.movePackman(partidaOnline.getPackmans().get(0).getInput(),rivalPacman,anchoSprite,up,altoSprite,down,mCurrentNanoTime);
 
                             //Actualizamos el packman online con las nuevas posiciones/estado.
-                            packmanOnline.setPositionX(packman.getPositionX());
-                            packmanOnline.setPositionY(packman.getPositionY());
-                            packmanOnline.setLives(packman.getLives());
-                            packmanOnline.setScore(packman.getScore());
+                            myPacmanOnline.setPositionX(myPacman.getPositionX());
+                            myPacmanOnline.setPositionY(myPacman.getPositionY());
+                            myPacmanOnline.setLives(myPacman.getLives());
+                            myPacmanOnline.setScore(myPacman.getScore());
+
+                            rivalPacmanOnline.setPositionX(partidaOnline.getPackmans().get(0).getPositionX());
+                            rivalPacmanOnline.setPositionY(partidaOnline.getPackmans().get(0).getPositionX());
+                            rivalPacmanOnline.setLives(partidaOnline.getPackmans().get(0).getLives());
+                            rivalPacmanOnline.setScore(partidaOnline.getPackmans().get(0).getScore());
 
                             //Comprobamos si el packman colisiona con algun objeto.
                             try {
-                                packman.checkCollisionOnline(packman,fantasmasByDefault, startSound, deadTime, jugador);
+                                myPacman.checkCollisionOnline(myPacman,fantasmasByDefault, startSound, deadTime, jugador);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             } catch (IOException e) {
@@ -366,7 +374,7 @@ public class EscenaComeOnline extends Scene {
                         }
 
                         //Comprobamos si el packman se ha comido a la bolita.
-                        if(bolitaOnline.eatingBol(packmanOnline)) {
+                        if(bolitaOnline.eatingBol(myPacmanOnline)) {
 
                             //Si nos la hemos comido, le pondremos un nuevo respawn.
                            bolitaOnline.setRespawn(HEIGHT_SCREEN, WIDTH_SCREEN);
@@ -374,19 +382,19 @@ public class EscenaComeOnline extends Scene {
                            //A la bolita gráfica, le pondremos los nuevos  valores X/Y.
                            bolitaDefault.setX(bolitaOnline.getX());
                            bolitaDefault.setY(bolitaOnline.getY());
-                           packman.setScore(packman.getScore()+1);
+                           myPacman.setScore(myPacman.getScore()+1);
 
                             //Comprobaremos si hemos sumado 10 capturas, para ganar una vida.
-                            if ((packman.getScore()%10)==0){
-                                packman.setLives(packman.getLives()+1);
+                            if ((myPacman.getScore()%10)==0){
+                                myPacman.setLives(myPacman.getLives()+1);
                             }
                         }
 
                         //Renderizamos todos los objetos por pantalla.
                         bolitaDefault.render(gc);
-                        packman.render(gc);
+                        myPacman.render(gc);
                         fantasmasByDefault.forEach(f -> f.render(gc));
-                        hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
+                        hud.renderHud(gc,myPacman,HEIGHT_SCREEN, WIDTH_SCREEN);
 
                         //Comprobamos el estado de la partida, para mostrar un mensaje u otro.
                         if(state ==-2) {
@@ -409,12 +417,12 @@ public class EscenaComeOnline extends Scene {
                         //Renderizaremos todos los elementos por pantalla.
                         fantasmasByDefault.forEach(f -> f.animation(currentNanoTime,""));
                         bolitaDefault.render(gc);
-                        packman.render(gc);
+                        myPacman.render(gc);
                         fantasma.render(gc);
                         fantasma2.render(gc);
                         fantasma3.render(gc);
                         fantasma4.render(gc);
-                        hud.renderHud(gc,packman,HEIGHT_SCREEN, WIDTH_SCREEN);
+                        hud.renderHud(gc,myPacman,HEIGHT_SCREEN, WIDTH_SCREEN);
 
                         //Mostraremos el mensaje de esperando jugadores.
                         gc.setFill( Color.WHITE );
@@ -427,10 +435,15 @@ public class EscenaComeOnline extends Scene {
                     //Actualizamos toda la partida para enviarla al servidor.
 
                     partidaOnline.setFantasmas(fantasmasOnlineByDefault);
-                    partidaOnline.getPackmans().get(0).setPositionX(packmanOnline.getPositionX());
-                    partidaOnline.getPackmans().get(0).setPositionY(packmanOnline.getPositionY());
-                    partidaOnline.getPackmans().get(0).setLives(packmanOnline.getLives());
-                    partidaOnline.getPackmans().get(0).setScore(packmanOnline.getScore());
+                    partidaOnline.addPacman2(myPacmanOnline);
+                    partidaOnline.getPackmans().get(0).setPositionX(myPacmanOnline.getPositionX());
+                    partidaOnline.getPackmans().get(0).setPositionY(myPacmanOnline.getPositionY());
+                    partidaOnline.getPackmans().get(0).setLives(myPacmanOnline.getLives());
+                    partidaOnline.getPackmans().get(0).setScore(myPacmanOnline.getScore());
+                    partidaOnline.getPackmans().get(1).setPositionX(rivalPacmanOnline.getPositionX());
+                    partidaOnline.getPackmans().get(1).setPositionY(rivalPacmanOnline.getPositionY());
+                    partidaOnline.getPackmans().get(1).setLives(rivalPacmanOnline.getLives());
+                    partidaOnline.getPackmans().get(1).setScore(rivalPacmanOnline.getScore());
                     partidaOnline.setBolita(bolitaOnline);
                 }
             }
@@ -441,7 +454,7 @@ public class EscenaComeOnline extends Scene {
     public static void toMatchResumeScreen() {
             Parent root = null;
             try {
-                root = FXMLLoader.load(EscenaComeOnline.class.getResource("../views/MatchResumeScreen.fxml"));
+                root = FXMLLoader.load(EscenaComeOnlineInvitado.class.getResource("../views/MatchResumeScreen.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

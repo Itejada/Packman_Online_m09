@@ -19,8 +19,7 @@ public class Fantasma {
     private Image[] frameFantasmaD = {new Image("img/fantasma2_0.png"),new Image("img/fantasma2_1.png")};
     private Image[] frameFantasmaU = {new Image("img/fantasma0_0.png"),new Image("img/fantasma0_1.png")};
 
-
-    public Fantasma(Image _image, double x, double y,double velX,double velY,int ANCHO, int ALTURA, double width,  double height) {
+    public Fantasma(Image _image, double x, double y, double velX, double velY, int ANCHO, int ALTURA, double width, double height) {
         this.image=_image;
         this.posX = x;
         this.posY = y;
@@ -93,6 +92,22 @@ public class Fantasma {
 
     public void setHeight(double height) {
         this.height = height;
+    }
+
+    public int getDirX() {
+        return dirX;
+    }
+
+    public void setDirX(int dirX) {
+        this.dirX = dirX;
+    }
+
+    public int getDirY() {
+        return dirY;
+    }
+
+    public void setDirY(int dirY) {
+        this.dirY = dirY;
     }
 
     public void move(long currentNanoTime) {

@@ -40,10 +40,10 @@ public class MainScreenController {
     }
 
     public void modoOnline() throws IOException {
-        Group root = new Group();
+        Parent root = FXMLLoader.load(getClass().getResource("../views/MainScreenOnline.fxml"));
         mystage = MyStage.getStage();
-        mystage.setTitle("PacMan V2");
-        mystage.setScene(new EscenaComeOnline(root,mainTheme));
+        mystage.setTitle("PacMan 2.0 - Modo Online");
+        MyStage.getStage().setScene(new Scene(root, MyStage.ANCHO, MyStage.ALTURA));
         MyStage.setStage(mystage);
         mystage.show();
     }

@@ -18,6 +18,7 @@ public class PartidaOnline implements Serializable {
     private ArrayList<PackmanOnline> packmans = new ArrayList<>();
     private BolitaOnline bolita;
     private EstadoPartida estadoPartida = EstadoPartida.ESPERANDO_JUGADORES;
+    private boolean firstConection = true;
 
 
     public PartidaOnline(Jugador jugador, ArrayList<FantasmaOnline> fantasmas, PackmanOnline packman, BolitaOnline bolita ) {
@@ -31,6 +32,14 @@ public class PartidaOnline implements Serializable {
         estadoPartida = EstadoPartida.ESPERANDO_JUGADORES;
     }
 
+    public boolean isFirstConection() {
+        return firstConection;
+    }
+
+    public void setFirstConection(boolean firstConection) {
+        this.firstConection = firstConection;
+    }
+
     public void addPlayer(Jugador jugador) {
         this.playersInGame.add(jugador);
         if(this.playersInGame.size()>=2) {
@@ -40,6 +49,10 @@ public class PartidaOnline implements Serializable {
 
     public EstadoPartida getEstadoPartida() {
         return estadoPartida;
+    }
+
+    public void addPacman2(PackmanOnline packmanOnline) {
+        this.packmans.add(1,packmanOnline);
     }
 
     public void setEstadoPartida(EstadoPartida estadoPartida) {
@@ -77,4 +90,6 @@ public class PartidaOnline implements Serializable {
     public void setBolita(BolitaOnline bolita) {
         this.bolita = bolita;
     }
+
+
 }

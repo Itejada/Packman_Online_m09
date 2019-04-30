@@ -15,13 +15,16 @@ public class PackmanOnline implements Serializable {
     private double WIDTH_PACMAN, HEIGHT_PACMAN;
     private int ALTURA, ANCHO;
 
+    private ArrayList<String> input;
+
     private boolean alive = true;
 
     public boolean isPlaying = false;
 
     private int idPlayer;
 
-    public PackmanOnline( double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double WIDTH_PACMAN, double HEIGHT_PACMAN, int lives, int idPlayer) {
+    public PackmanOnline( ArrayList<String> input,double positionX, double positionY, double velocityX, double velocityY, int ALTURA, int ANCHO, double WIDTH_PACMAN, double HEIGHT_PACMAN, int lives, int idPlayer) {
+        this.input=input;
         this.positionX = positionX;
         this.positionY = positionY;
         this.velocityX = velocityX;
@@ -33,6 +36,14 @@ public class PackmanOnline implements Serializable {
         this.lives=lives;
         this.score = 0;
         this.idPlayer=idPlayer;
+    }
+
+    public ArrayList<String> getInput() {
+        return input;
+    }
+
+    public void setInput(ArrayList<String> input) {
+        this.input = input;
     }
 
     public double getPositionX() {

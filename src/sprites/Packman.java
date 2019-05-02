@@ -55,10 +55,18 @@ public class Packman {
         this.lives=lives;
         this.score = 0;
         this.idPlayer=idPlayer;
-        for (int i = 0; i < 6; i++) {
-            framesR[i] = new Image("img/pacbol_" + (i + 1) + ".png");
-            framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
+        if(idPlayer==0) {
+            for (int i = 0; i < 6; i++) {
+                framesR[i] = new Image("img/pacbol_" + (i + 1) + ".png");
+                framesL[i] = new Image("img/pacbol_" + (i + 7) + ".png");
+            }
+        }else {
+            for (int i = 0; i < 6; i++) {
+                framesR[i] = new Image("img/pacbol2_" + (i + 1) + ".png");
+                framesL[i] = new Image("img/pacbol2_" + (i + 7) + ".png");
+            }
         }
+
         moveSound.setCycleCount(MediaPlayer.INDEFINITE);
     }
 
@@ -75,8 +83,8 @@ public class Packman {
         gc.drawImage(image, positionX, positionY, WIDTH_PACMAN, HEIGHT_PACMAN);
     }
 
-    public void movePackman(ArrayList<String> input, Packman packman, int anchoSprite, Image up, int altoSprite, Image down, long mcurrentNanoTime) {
 
+    public void movePackman(ArrayList<String> input, Packman packman, int anchoSprite, Image up, int altoSprite, Image down, long mcurrentNanoTime) {
         if ((input.contains("LEFT") || input.contains("A")) != (input.contains("RIGHT") || input.contains("D"))) {
             if ((input.contains("LEFT") || input.contains("A"))) {
                 if (positionX > 0) {
@@ -130,6 +138,7 @@ public class Packman {
         packman.setPositionX(positionX);
         packman.setPositionY(positionY);
     }
+
 
     public void checkCollision(Packman packman, Fantasma fantasma, Fantasma fantasma2, Fantasma fantasma3, Fantasma fantasma4, MediaPlayer startSound, long deadTime, Partida partida) throws InterruptedException, IOException {
         Fantasma[] fantasmas = {fantasma, fantasma2, fantasma3, fantasma4};
@@ -206,7 +215,7 @@ public class Packman {
         }
     }
 
-    public void checkCollisionOnline(Packman packman, ArrayList<Fantasma> fantasmas, MediaPlayer startSound, long deadTime, Jugador jugador) throws InterruptedException, IOException {
+    public void checkCollisionOnline(Packman packman, ArrayList<FantasmaEstatico> fantasmas, MediaPlayer startSound, long deadTime, Jugador jugador) throws InterruptedException, IOException {
         for (int i = 0; i < fantasmas.size(); i++) {
             alive=true;
             if ((packman.getWIDTH_PACMAN() / 2) + ((fantasmas.get(i).getHeight()-12) / 2) > packman.distancia(fantasmas.get(i).getPosX()+4, fantasmas.get(i).getPosY()+3)) {
@@ -220,23 +229,24 @@ public class Packman {
                 deadSound.seek(Duration.ZERO);
                 deadSound.play();
 
-                setPositionY(ALTURA / 9);
-                setPositionX(0);
-                for (int j = 0; j < fantasmas.size(); j++) {
-                    fantasmas.get(j).setPosX(100 + (Math.random() * (fantasmas.get(j).getPosX()% ANCHO)));
-                    fantasmas.get(j).setPosY(100 + (Math.random() * ((fantasmas.get(j).getPosY()*2) % ALTURA)));
+                if(jugador.isHost()) {
+                    setPositionY(ALTURA-40);
+                }else {
+                    setPositionY(ALTURA / 9);
                 }
+                setPositionX(0);
+
                 packman.setLives((getLives()>=0) ?  getLives()-1 :(-1));
                 jugador.setBolitasCapturadas(getLives()+1,score);
                 jugador.setTime(getLives()+1, (deadTime/Math.pow(10,9)));
                 packman.setScore(0);
 
                 Thread.sleep(1000);
-                if(packman.getLives()<0) {
+                if(getLives()<0) {
                     moveSound.stop();
                     deadSound.stop();
-                    packman.setPositionX(0);
-                    packman.setPositionY(0);
+                    setPositionX(0);
+                    setPositionY(0);
 
                     double[] timeDone = jugador.getTime();
                     int[] bolitasDone = jugador.getBolitasCapturadas();
@@ -269,11 +279,7 @@ public class Packman {
                     jugador.setBestTime(bestTime);
                     jugador.setWorstCatch(worstCatch);
                     jugador.setWorstTime(worstTime);
-
-                    EscenaCome.toMatchResumeScreen();
-                }else {
-                    startSound.seek(Duration.ZERO);
-                    startSound.play();
+                    jugador.setEliminado(true);
                 }
             }
         }

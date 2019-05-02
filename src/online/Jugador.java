@@ -9,7 +9,7 @@ public class Jugador implements Serializable {
 
     private static final long serialVersionUID = 0x1b32faab5902bfa3L;
 
-    private static String name;
+    private String name;
     private int[] bolitasCapturadas = new int[6];
     private double[] time = new double[6];
     private  double bestTime;
@@ -19,12 +19,19 @@ public class Jugador implements Serializable {
     private boolean bestadded;
     private boolean worstadded;
     private boolean host;
+    private int id;
+    private boolean eliminado;
 
 
     public Jugador(boolean host) {
-        name = ConfigurationGame.getPlayerName();
+        this.name = ConfigurationGame.getPlayerName();
         this.host=host;
+        this.eliminado=false;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public boolean isHost() {
         return host;
@@ -33,7 +40,8 @@ public class Jugador implements Serializable {
     public void setHost(boolean host) {
         this.host = host;
     }
-    public static String getName() {
+
+    public String getName() {
         return name;
     }
 
@@ -108,5 +116,13 @@ public class Jugador implements Serializable {
         this.worstCatch=0;
         this.bestadded=false;
         this.worstadded=false;
+    }
+
+    public boolean isEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
     }
 }

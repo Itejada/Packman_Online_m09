@@ -50,7 +50,7 @@ public class BolitaOnline implements Serializable {
         }
     }
 
-    public boolean eatingBol(PackmanOnline packman) {
+    public boolean eatingBol(Packman packman) {
         if (((packman.getHEIGHT_PACMAN() / 2)) + ((HEIGHT_BOL /2)) > packman.distancia(x-6, y-6)) {
            return true;
         }else {
@@ -59,7 +59,7 @@ public class BolitaOnline implements Serializable {
     }
 
     public void setRespawn( double WIDTH_SCREEN, double HEIGHT_SCREEN) {
-        x=(Math.random()*(WIDTH_SCREEN-(100 +(WIDTH_SCREEN/9))))+50 +(WIDTH_SCREEN/9) ;
-        y=(Math.random()*(HEIGHT_SCREEN-(100)))+50;
+        this.x=(Math.random()*(WIDTH_SCREEN-(100 +(WIDTH_SCREEN/9))))+50 +(WIDTH_SCREEN/9) ;
+        this.y=(Math.random()*(HEIGHT_SCREEN-(100)))+50;
     }
 }

@@ -8,7 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 import online.EscenaComeOnline;
-import online.EscenaComeOnlineInvitado;
+import online.PartidaOnline;
+import online.ServidorAdivinaUDP_Obj;
 import sounds.MainTheme;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class MainScreenOnlineController {
         Group root = new Group();
         mystage = MyStage.getStage();
         mystage.setTitle("PacMan V2");
-        mystage.setScene(new EscenaComeOnline(root,mainTheme));
+        mystage.setScene(new EscenaComeOnline(root,mainTheme,true,null));
         MyStage.setStage(mystage);
         mystage.show();
     }
@@ -49,7 +50,7 @@ public class MainScreenOnlineController {
         Group root = new Group();
         mystage = MyStage.getStage();
         mystage.setTitle("PacMan V2");
-        mystage.setScene(new EscenaComeOnlineInvitado(root,mainTheme,ip));
+        mystage.setScene(new EscenaComeOnline(root,mainTheme,false,ip));
         MyStage.setStage(mystage);
         mystage.show();
     }

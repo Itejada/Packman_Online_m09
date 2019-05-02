@@ -13,19 +13,22 @@ public class PartidaOnline implements Serializable {
         ESPERANDO_JUGADORES, EMPEZADA, ACABADA
     }
 
-    private ArrayList<Jugador> playersInGame = new ArrayList<>();
+    public  ArrayList<Jugador> playersInGame = new ArrayList<>();
     private ArrayList<FantasmaOnline> fantasmas = new ArrayList<>();
     private ArrayList<PackmanOnline> packmans = new ArrayList<>();
     private BolitaOnline bolita;
+    private int bolitasJugadas = 0;
     private EstadoPartida estadoPartida = EstadoPartida.ESPERANDO_JUGADORES;
     private boolean firstConection = true;
+    private int idEmisor;
 
 
-    public PartidaOnline(Jugador jugador, ArrayList<FantasmaOnline> fantasmas, PackmanOnline packman, BolitaOnline bolita ) {
+    public PartidaOnline(Jugador jugador, ArrayList<FantasmaOnline> fantasmas, PackmanOnline packman, BolitaOnline bolita, int idEmisor ) {
         this.playersInGame.add(jugador);
         this.fantasmas.addAll(fantasmas);
         this.packmans.add(packman);
         this.bolita = bolita;
+        this.idEmisor=idEmisor;
     }
 
     public PartidaOnline() {
@@ -45,6 +48,18 @@ public class PartidaOnline implements Serializable {
         if(this.playersInGame.size()>=2) {
             this.estadoPartida = EstadoPartida.EMPEZADA;
         }
+    }
+
+    public void setJugador(Jugador jugador,int id) {
+        playersInGame.set(id,jugador);
+    }
+
+    public int getIdEmisor() {
+        return idEmisor;
+    }
+
+    public void setIdEmisor(int idEmisor) {
+        this.idEmisor = idEmisor;
     }
 
     public EstadoPartida getEstadoPartida() {
@@ -79,8 +94,8 @@ public class PartidaOnline implements Serializable {
         return packmans;
     }
 
-    public void setPackmans(ArrayList<PackmanOnline> packman) {
-        this.packmans = packman;
+    public void setPackman(PackmanOnline packman, int player) {
+        packmans.set(player,packman);
     }
 
     public BolitaOnline getBolita() {
@@ -91,5 +106,11 @@ public class PartidaOnline implements Serializable {
         this.bolita = bolita;
     }
 
+    public int getBolitasJugadas() {
+        return bolitasJugadas;
+    }
 
+    public void setBolitasJugadas(int bolitasJugadas) {
+        this.bolitasJugadas = bolitasJugadas;
+    }
 }

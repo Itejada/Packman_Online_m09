@@ -21,6 +21,7 @@ public class ServidorAdivinaUDP_Obj {
     MulticastSocket multisocket;
     InetAddress multicastIp;
     PartidaOnline partidaOnline;
+    PartidaOnline partidaOnlineRecibida;
 
     public ServidorAdivinaUDP_Obj(int port, PartidaOnline partidaOnline)  {
         try {
@@ -37,43 +38,17 @@ public class ServidorAdivinaUDP_Obj {
         this.port = port;
     }
 
-    public void setPartidaOnline(PartidaOnline partidaOnline) {
-        this.partidaOnline=partidaOnline;
-    }
-
     public void runServer() throws IOException {
-        byte [] receivingData = new byte[4096];
+        byte [] receivingData = new byte[2048];
         byte [] sendingData;
         InetAddress clientIP;
         int clientPort;
 
         //el servidor atén el port mentre hi hagi jugadors
         while(partidaOnline.getEstadoPartida() != PartidaOnline.EstadoPartida.ACABADA){
-            System.out.println("esperando datos.");
             DatagramPacket packet = new DatagramPacket(receivingData, receivingData.length);
             socket.receive(packet);
             sendingData = processData(packet.getData(), packet.getLength());
-            ByteArrayInputStream in = new ByteArrayInputStream(sendingData);
-            try {
-                ObjectInputStream ois = new ObjectInputStream(in);
-                PartidaOnline partidaOnlineTest  = (PartidaOnline) ois.readObject();
-                if(partidaOnlineTest.isFirstConection() && !partidaOnlineTest.getPlayersInGame().get(0).isHost()) {
-                    //La resposta és el tauler amb les dades de tots els jugadors
-                    ByteArrayOutputStream os = new ByteArrayOutputStream();
-                    ObjectOutputStream oos = null;
-                    try {
-                        oos = new ObjectOutputStream(os);
-                        oos.writeObject(partidaOnline);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    sendingData = os.toByteArray();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
             clientIP = packet.getAddress();
             clientPort = packet.getPort();
             packet = new DatagramPacket(sendingData, sendingData.length, clientIP, clientPort);
@@ -82,29 +57,68 @@ public class ServidorAdivinaUDP_Obj {
             DatagramPacket multipacket = new DatagramPacket(sendingData, sendingData.length, multicastIp,multiport);
             multisocket.send(multipacket);
         }
+        //Enviamos el ultimo resultado a todos.
+        DatagramPacket packet = new DatagramPacket(receivingData, receivingData.length);
+        socket.receive(packet);
+        sendingData = processData(packet.getData(), packet.getLength());
+        clientIP = packet.getAddress();
+        clientPort = packet.getPort();
+        packet = new DatagramPacket(sendingData, sendingData.length, clientIP, clientPort);
+        socket.send(packet);
+
         socket.close();
     }
 
     //Processar la Jugada: Nom i numero
     private byte[] processData(byte[] data, int length) {
-        //PartidaOnline partidaOnlineRecibida = null;
+
         ByteArrayInputStream in = new ByteArrayInputStream(data);
         try {
             ObjectInputStream ois = new ObjectInputStream(in);
-            partidaOnline = (PartidaOnline) ois.readObject();
-            partidaOnline.setFirstConection(false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            partidaOnlineRecibida = (PartidaOnline) ois.readObject();
+
+            //Si el host se conecta por primera vez, actualizamos la partida del server y seteamos su primera conexión a false.
+            if(partidaOnlineRecibida.isFirstConection() && partidaOnlineRecibida.getPlayersInGame().get(0).isHost()) {
+                partidaOnlineRecibida.setFirstConection(false);
+                partidaOnline=partidaOnlineRecibida;
+            }
+
+            if(partidaOnlineRecibida.isFirstConection()) {
+                partidaOnlineRecibida.setFirstConection(false);
+            }
+
+            //Comprobamos que la partida recibida no sea el host y su partida tenga un solo jugador (aún no se ha unido a la partida)
+            //Entonces añadimos el jugador, y su packman a la partida actual.
+            if(partidaOnlineRecibida.getPlayersInGame().size()==1 && !partidaOnlineRecibida.getPlayersInGame().get(0).isHost()) {
+                System.out.println(partidaOnlineRecibida.getPlayersInGame().get(0).getName());
+                partidaOnline.addPlayer(partidaOnlineRecibida.getPlayersInGame().get(0));
+                partidaOnline.addPacman2(partidaOnlineRecibida.getPackmans().get(0));
+                partidaOnline.setEstadoPartida(PartidaOnline.EstadoPartida.EMPEZADA);
+            }
+            //Si no, actualizaremos la partidaOnline añadiendo los campos de ese player.
+            else if(partidaOnlineRecibida.getPlayersInGame().size()>1) {
+                if(partidaOnlineRecibida.getIdEmisor()==0) {
+                    partidaOnline.setPackman(partidaOnlineRecibida.getPackmans().get(0),0);
+                    partidaOnline.setJugador(partidaOnlineRecibida.getPlayersInGame().get(0),0);
+                    partidaOnline.setFantasmas(partidaOnlineRecibida.getFantasmas());
+                }else {
+                    partidaOnline.setPackman(partidaOnlineRecibida.getPackmans().get(1),1);
+                    partidaOnline.setJugador(partidaOnlineRecibida.getPlayersInGame().get(1),1);
+                }
+
+                if(partidaOnlineRecibida.getBolitasJugadas()>partidaOnline.getBolitasJugadas()) {
+                    partidaOnline.setBolitasJugadas(partidaOnlineRecibida.getBolitasJugadas());
+                    partidaOnline.setBolita(partidaOnlineRecibida.getBolita());
+                }
+
+                //comprobamos si algun jugador ya ha perdido.
+                if(partidaOnlineRecibida.getPlayersInGame().get(0).isEliminado() && partidaOnlineRecibida.getPlayersInGame().get(1).isEliminado()) {
+                    partidaOnline.setEstadoPartida(PartidaOnline.EstadoPartida.ACABADA);
+                }
+            }
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-        //comprobamos vidas del packman
-        if(partidaOnline.getPackmans().get(0).getLives()<0 && partidaOnline.getPackmans().get(0).getLives()<0) {
-            partidaOnline.setEstadoPartida(PartidaOnline.EstadoPartida.ACABADA);
-        }
-
-        System.out.println(partidaOnline.getEstadoPartida());
 
         //La resposta és el tauler amb les dades de tots els jugadors
         ByteArrayOutputStream os = new ByteArrayOutputStream();
